@@ -39,4 +39,18 @@
 > AI 클리셰(인디고 #6366f1, Poppins+Inter, glassmorphism 남용, 이모지 아이콘) 배제.
 > 도메인 아이콘(재생·라이브 도트·시그널·시청자·컨트롤러·파형)은 inline SVG로 직접 작성.
 
-**최종 선택 대기** → 사용자가 A / B / C / N(NX Basic) / D(직접) 중 선택하면 이 문서를 확정 방향으로 갱신.
+## ✅ 확정 방향: C — NX Basic 1.0v (다크+라이트 하이브리드)
+
+- **DESIGN_SYSTEM = nxbasic** (넥슨 사내 디자인 시스템 준수 — 임의 변주 없이 토큰/컴포넌트 사용)
+- **프론트엔드 프레임워크 = React** (NX Basic은 React 패키지 `import { Button } from 'nxbasic'`)
+- **레이아웃**: 상단 다크(히어로+사이드 패널+카테고리) + 하단 라이트(라이브 카드 그리드)
+- **토큰**:
+  - 다크: 배경 `bc-1000 #17191c` · surface `db-200 #26282c` · elevated `db-100 #393c41` · 액센트 `pc-500 #6babff` · LIVE `r-200 #ef5d5d`
+  - 라이트: 배경 `lb-200 #f9fafb` · 카드 `#fff` · 액센트 `pc-800 #0a74ff`
+  - 타이포: `type-default-16` (16/24/-0.35px) · Pretendard→Gothic A1
+  - 시맨틱: primary `pc-800`, danger `r-300`, success `g-300`
+- **컴포넌트**: NX Basic 18종 매핑 (Tab · Card · Badge · Tag · Search · Button · Dialog · Table 등). 패키지 설치 시 `nxbasic` import 우선, 사내망 제약 시 Storybook props 참조 동등 구현.
+- **참조**: `refs/design-systems/nxbasic-1.0v.md` · `nxbasic-mcp` (list_components / search_design_tokens / get_component_docs)
+
+> 확정일: 2026-07-03 · `boilerplate-setup` Q5* [5단계] 사용자 C 선택 → NX Basic 전환본으로 락.
+> Stage 1.5(웹 디자인 리서치)는 DESIGN_SYSTEM=nxbasic 이므로 생략하고 Stage 2로 진행.
