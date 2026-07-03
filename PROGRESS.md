@@ -13,12 +13,14 @@
 
 | 항목 | 값 |
 |---|---|
-| **현재 단계** | Phase D — 프로젝트 세팅 위저드 (boilerplate-setup) **완료** |
-| **상태** | ✅ 완료 → 다음: create-spec |
-| **마지막 작업** | 기술스택 확정(Next.js15/React19/TS·NX Basic·BE 나중·Playwright·auth none) |
-| **세션 체크포인트** | 2026-07-03 boilerplate-setup 완료 |
+| **현재 단계** | create-spec Step 2.7 — UI 프로토타입 **확인 대기** |
+| **상태** | ⏸️ 사용자 확인 대기 (A: 승인 / B: 피드백) |
+| **마지막 작업** | Next.js15+NX Basic 5페이지 Mock 구현 · build 통과 · 5라우트 200 OK |
+| **세션 체크포인트** | 2026-07-03 Step 2.7 프로토타입 완료 |
 | **review_status** | — |
-| **다음 행동** | `create-spec 실행해줘` (spec.md → plan.md → tasks.md, Step 2.7에서 Next.js+NX Basic UI 프로토타입) |
+| **다음 행동** | 사용자 승인(A) 시 Step 2.8(타입 확정) → decisions/plan/data-model/tasks 생성 |
+
+**Phase 0 프로토타입**: `http://localhost:3000` · 5페이지(홈/시청/채널/클립/검색) · 전부 Mock
 
 **확정 사항 요약**
 - 프로젝트: NXlive — 넥슨 게임 라이브 스트리밍 (외부 유저, 신규)
