@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NXlive — 디자인 방향 3안</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Black+Han+Sans&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Gowun+Batang:wght@400;700&family=Orbitron:wght@500;700;900&family=Gothic+A1:wght@300;400;500;600;700;800&display=swap');
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;overflow-x:hidden}
+body{font-family:'Gothic A1',sans-serif;background:#050507;color:#fff;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+ul{list-style:none}
+
+/* ============ TAB BAR ============ */
+#tab-bar{position:fixed;top:0;left:0;right:0;height:52px;z-index:10000;
+  display:flex;align-items:center;gap:6px;padding:0 16px;
+  background:rgba(8,8,12,.82);backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,.08)}
+#tab-bar .brand{font-family:'Space Grotesk';font-weight:700;letter-spacing:.5px;margin-right:14px;font-size:15px}
+#tab-bar .brand b{color:#B8FF2E}
+#tab-bar button{padding:7px 15px;border-radius:999px;font-size:13px;font-weight:600;
+  color:#9aa0aa;border:1px solid transparent;transition:all .18s}
+#tab-bar button:hover{color:#fff;background:rgba(255,255,255,.06)}
+#tab-bar button.active{color:#050507;background:#fff}
+#tab-bar .hint{margin-left:auto;font-size:12px;color:#6b7280}
+
+.sample{display:none;padding-top:52px;min-height:100vh}
+.sample.active{display:block}
+.wrap{max-width:1440px;margin:0 auto;width:100%}
+
+/* live dot */
+@keyframes pulse{0%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.8)}100%{opacity:1;transform:scale(1)}}
+.livedot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#ff3b3b;animation:pulse 1.4s infinite}
+@keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
+
+/* =================================================================
+   SAMPLE A — BROADCAST BENTO  (역동성 / 애시드 라임 / 벤토 그리드)
+   ================================================================= */
+.A{--bg:#101014;--surf:#181820;--surf2:#20202b;--line:#2b2b38;--acid:#B8FF2E;--txt:#f4f5f7;--mut:#9ea3ad;
+  background:radial-gradient(120% 80% at 100% 0%,#171720 0%,#0d0d11 55%);color:var(--txt);font-family:'Gothic A1'}
+.A .topline{display:flex;align-items:center;gap:28px;padding:22px 40px 8px}
+.A .logo{font-family:'Black Han Sans';font-size:28px;letter-spacing:-.5px}
+.A .logo span{color:var(--acid)}
+.A .nav{display:flex;gap:22px;font-weight:600;font-size:15px;color:var(--mut)}
+.A .nav a.on,.A .nav a:hover{color:var(--txt)}
+.A .topright{margin-left:auto;display:flex;align-items:center;gap:14px}
+.A .search{background:var(--surf);border:1px solid var(--line);border-radius:10px;padding:9px 14px;display:flex;gap:9px;align-items:center;color:var(--mut);font-size:14px;min-width:220px}
+.A .btn-acid{background:var(--acid);color:#0c0c0c;font-weight:800;padding:10px 18px;border-radius:10px;font-size:14px;transition:transform .15s}
+.A .btn-acid:hover{transform:translateY(-2px)}
+
+.A .statbar{display:flex;gap:30px;padding:12px 40px 20px;color:var(--mut);font-size:13px;font-weight:600}
+.A .statbar b{color:var(--acid);font-family:'Space Grotesk';font-size:16px}
+
+.A .bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:172px;gap:16px;padding:0 40px 60px}
+.A .tile{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);
+  background:var(--surf);transition:transform .2s,border-color .2s}
+.A .tile:hover{transform:translateY(-4px);border-color:var(--acid)}
+.A .tile .thumb{position:absolute;inset:0}
+.A .tile .grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,12,.05),rgba(10,10,12,.92))}
+.A .tile .meta{position:absolute;left:0;right:0;bottom:0;padding:16px}
+.A .tile .game{font-size:12px;font-weight:700;color:var(--acid);text-transform:uppercase;letter-spacing:.6px}
+.A .tile .ttl{font-weight:700;font-size:16px;margin-top:4px;line-height:1.3}
+.A .tile .who{font-size:13px;color:var(--mut);margin-top:6px;display:flex;align-items:center;gap:7px}
+.A .tile .live{position:absolute;top:12px;left:12px;background:#ff2f2f;color:#fff;font-weight:800;font-size:11px;padding:4px 9px;border-radius:6px;display:flex;align-items:center;gap:6px;letter-spacing:.5px}
+.A .tile .live .livedot{background:#fff}
+.A .tile .views{position:absolute;top:12px;right:12px;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);font-size:12px;font-weight:700;padding:4px 9px;border-radius:6px;display:flex;gap:5px;align-items:center}
+.A .feat{grid-column:span 2;grid-row:span 2}
+.A .feat .ttl{font-size:26px;font-family:'Space Grotesk';font-weight:700}
+.A .wide{grid-column:span 2}
+.A .cat{background:linear-gradient(135deg,var(--surf2),var(--surf));display:flex;flex-direction:column;justify-content:center;padding:20px;border:1px solid var(--line)}
+.A .cat .k{font-family:'Space Grotesk';font-weight:700;font-size:19px}
+.A .cat .n{color:var(--mut);font-size:13px;margin-top:4px}
+.A .cat svg{margin-bottom:10px}
+
+/* =================================================================
+   SAMPLE B — CINEMATIC SPLIT  (세련됨/고급감 / 앰버 골드 / 분할)
+   ================================================================= */
+.B{--bg:#16130f;--surf:#1f1b15;--line:#332c22;--gold:#F0A93B;--txt:#f6f1e9;--mut:#b3a894;
+  background:linear-gradient(180deg,#17140f,#0f0d0a);color:var(--txt);font-family:'Gothic A1'}
+.B .split{display:grid;grid-template-columns:1.15fr 1fr;min-height:calc(100vh - 52px)}
+.B .left{position:relative;padding:48px 44px;display:flex;flex-direction:column;border-right:1px solid var(--line);overflow:hidden}
+.B .left::after{content:"";position:absolute;inset:0;background:radial-gradient(80% 60% at 20% 20%,rgba(240,169,59,.14),transparent 60%);pointer-events:none}
+.B .brandrow{display:flex;align-items:center;gap:14px;z-index:2}
+.B .logo{font-family:'Fraunces';font-weight:600;font-size:26px;letter-spacing:.3px}
+.B .logo em{color:var(--gold);font-style:italic}
+.B .brandrow nav{margin-left:auto;display:flex;gap:24px;font-size:14px;color:var(--mut);font-weight:600}
+.B .brandrow nav a:hover,.B .brandrow nav a.on{color:var(--txt)}
+.B .kick{margin-top:auto;font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);z-index:2}
+.B .headline{font-family:'Gowun Batang';font-weight:700;font-size:52px;line-height:1.16;margin-top:16px;z-index:2;max-width:12ch}
+.B .sub{color:var(--mut);font-size:16px;line-height:1.7;margin-top:20px;max-width:44ch;z-index:2}
+.B .cta{margin-top:28px;display:flex;gap:14px;z-index:2}
+.B .cta .g{background:var(--gold);color:#1a1206;font-weight:800;padding:14px 26px;border-radius:4px;font-size:15px;transition:transform .15s}
+.B .cta .g:hover{transform:translateY(-2px)}
+.B .cta .o{border:1px solid var(--line);padding:14px 26px;border-radius:4px;font-weight:700;font-size:15px;color:var(--txt)}
+.B .cta .o:hover{border-color:var(--gold)}
+.B .feature-card{margin-top:34px;z-index:2;display:flex;gap:18px;align-items:center;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:16px}
+.B .feature-card .pv{width:120px;height:72px;border-radius:8px;background:linear-gradient(135deg,#3a2f1e,#241d13);flex:none;position:relative;overflow:hidden}
+.B .feature-card .pv .lv{position:absolute;top:8px;left:8px;background:#ff2f2f;font-size:10px;font-weight:800;padding:2px 7px;border-radius:4px}
+.B .feature-card .info .g{font-size:12px;color:var(--gold);font-weight:700;letter-spacing:.5px}
+.B .feature-card .info .t{font-family:'Fraunces';font-size:18px;margin-top:3px}
+.B .feature-card .info .m{font-size:13px;color:var(--mut);margin-top:5px}
+
+.B .right{padding:40px 40px;display:flex;flex-direction:column}
+.B .right h3{font-family:'Fraunces';font-size:20px;font-weight:600;display:flex;align-items:center;gap:10px}
+.B .right h3 .livedot{margin-top:2px}
+.B .list{margin-top:22px;display:flex;flex-direction:column;gap:2px}
+.B .row{display:flex;gap:16px;align-items:center;padding:16px 12px;border-radius:12px;transition:background .16s;border-bottom:1px solid rgba(255,255,255,.04)}
+.B .row:hover{background:rgba(240,169,59,.06)}
+.B .rank{font-family:'Fraunces';font-size:22px;color:var(--gold);width:30px;text-align:center;flex:none}
+.B .rthumb{width:92px;height:56px;border-radius:8px;flex:none;position:relative;overflow:hidden}
+.B .rthumb .v{position:absolute;bottom:6px;right:6px;background:rgba(0,0,0,.7);font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px}
+.B .rinfo{flex:1;min-width:0}
+.B .rinfo .t{font-weight:700;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.B .rinfo .m{font-size:13px;color:var(--mut);margin-top:4px}
+.B .rinfo .tag{display:inline-block;font-size:11px;color:var(--gold);border:1px solid var(--line);padding:1px 8px;border-radius:999px;margin-top:6px}
+
+/* =================================================================
+   SAMPLE C — NEON DEPTH  (혁신/모던함 / 네온 시안+마젠타 / 레이어드)
+   ================================================================= */
+.C{--bg:#0B0E17;--surf:#121627;--surf2:#171d33;--line:#26304d;--cyan:#22E0D6;--mag:#FF3D9A;--txt:#eaf0ff;--mut:#8b95b5;
+  background:
+   radial-gradient(60% 50% at 85% 8%,rgba(255,61,154,.16),transparent 60%),
+   radial-gradient(55% 45% at 8% 25%,rgba(34,224,214,.14),transparent 60%),
+   #0B0E17;color:var(--txt);font-family:'Gothic A1'}
+.C .head{display:flex;align-items:center;gap:26px;padding:26px 44px}
+.C .logo{font-family:'Orbitron';font-weight:900;font-size:22px;letter-spacing:1px}
+.C .logo span{color:var(--cyan)}
+.C .head nav{display:flex;gap:22px;font-weight:600;font-size:14px;color:var(--mut)}
+.C .head nav a.on,.C .head nav a:hover{color:var(--txt)}
+.C .head .r{margin-left:auto;display:flex;gap:12px;align-items:center}
+.C .chip{border:1px solid var(--line);padding:9px 15px;border-radius:8px;font-size:13px;font-weight:600;color:var(--mut)}
+.C .go{font-family:'Space Grotesk';font-weight:700;font-size:14px;padding:10px 20px;border-radius:8px;
+  color:#04120f;background:linear-gradient(90deg,var(--cyan),#5cffe9);box-shadow:0 0 26px rgba(34,224,214,.35)}
+
+.C .stage{position:relative;padding:18px 44px 70px}
+.C .layer{display:grid;grid-template-columns:1.5fr 1fr;gap:22px;align-items:stretch}
+.C .hero{position:relative;border-radius:22px;overflow:hidden;border:1px solid var(--line);min-height:420px;
+  background:linear-gradient(135deg,#141a30,#0e1324)}
+.C .hero .glowline{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--cyan),var(--mag))}
+.C .hero .lv{position:absolute;top:20px;left:20px;background:var(--mag);font-weight:800;font-size:12px;padding:5px 11px;border-radius:7px;display:flex;gap:7px;align-items:center;letter-spacing:.5px}
+.C .hero .lv .livedot{background:#fff}
+.C .hero .vw{position:absolute;top:20px;right:20px;background:rgba(4,8,18,.6);backdrop-filter:blur(8px);border:1px solid var(--line);font-size:13px;font-weight:700;padding:5px 12px;border-radius:7px;display:flex;gap:6px;align-items:center}
+.C .hero .cap{position:absolute;left:0;right:0;bottom:0;padding:30px;background:linear-gradient(180deg,transparent,rgba(6,9,18,.9))}
+.C .hero .cap .g{font-family:'Orbitron';font-size:12px;font-weight:700;color:var(--cyan);letter-spacing:1.5px}
+.C .hero .cap .t{font-family:'Space Grotesk';font-weight:700;font-size:32px;margin-top:8px;line-height:1.2}
+.C .hero .cap .who{color:var(--mut);margin-top:10px;display:flex;align-items:center;gap:9px;font-size:14px}
+.C .hero .cap .who .av{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--mag))}
+
+.C .side{display:flex;flex-direction:column;gap:16px}
+.C .panel{background:var(--surf);border:1px solid var(--line);border-radius:18px;padding:20px;position:relative;overflow:hidden}
+.C .panel h4{font-family:'Space Grotesk';font-size:15px;font-weight:600;display:flex;align-items:center;gap:9px;margin-bottom:14px}
+.C .minirow{display:flex;gap:12px;align-items:center;padding:9px 0;border-top:1px solid rgba(255,255,255,.05)}
+.C .minirow:first-of-type{border-top:none}
+.C .minirow .mt{width:52px;height:34px;border-radius:7px;flex:none;background:linear-gradient(135deg,#1c2340,#141a30)}
+.C .minirow .mi{flex:1;min-width:0}
+.C .minirow .mi .t{font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.C .minirow .mi .m{font-size:11px;color:var(--mut);margin-top:2px}
+.C .minirow .n{font-family:'Space Grotesk';font-weight:700;font-size:13px;color:var(--cyan)}
+.C .metric{display:flex;justify-content:space-between;align-items:baseline;padding:6px 0}
+.C .metric .lab{font-size:13px;color:var(--mut)}
+.C .metric .val{font-family:'Orbitron';font-weight:700;font-size:20px}
+.C .metric .val.mag{color:var(--mag)}
+.C .metric .val.cy{color:var(--cyan)}
+.C .catrow{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:22px}
+.C .catcard{background:var(--surf2);border:1px solid var(--line);border-radius:14px;padding:16px 12px;text-align:center;transition:transform .18s,border-color .18s}
+.C .catcard:hover{transform:translateY(-4px);border-color:var(--cyan)}
+.C .catcard svg{margin:0 auto 9px}
+.C .catcard .k{font-weight:700;font-size:13px}
+.C .catcard .n{font-size:11px;color:var(--mut);margin-top:3px}
+
+/* thumbnails color fills (shared, distinct per game) */
+.g-maple{background:linear-gradient(135deg,#ff9a3c,#ff5e7e)}
+.g-dnf{background:linear-gradient(135deg,#8a5cff,#4d7cff)}
+.g-fc{background:linear-gradient(135deg,#12b46a,#0a8f8f)}
+.g-sudden{background:linear-gradient(135deg,#3a4a63,#1e2740)}
+.g-baram{background:linear-gradient(135deg,#c0392b,#7d1f14)}
+.g-mabi{background:linear-gradient(135deg,#4aa3df,#6f6ce0)}
+.g-blue{background:linear-gradient(135deg,#38bdf8,#818cf8)}
+.g-kart{background:linear-gradient(135deg,#ffb03a,#ff6b3a)}
+
+@media (max-width:1080px){
+  .A .bento{grid-template-columns:repeat(2,1fr)}
+  .A .feat{grid-column:span 2}
+  .B .split{grid-template-columns:1fr}
+  .C .layer{grid-template-columns:1fr}
+  .C .catrow{grid-template-columns:repeat(3,1fr)}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<div id="tab-bar">
+  <span class="brand"><b>NX</b>live 디자인 3안</span>
+  <button data-t="A" class="active">A · Broadcast Bento</button>
+  <button data-t="B">B · Cinematic Split</button>
+  <button data-t="C">C · Neon Depth</button>
+  <span class="hint">역동성 · 세련됨 · 혁신 — 방향을 비교해 A / B / C 선택</span>
+</div>
+
+<!-- ============================== SAMPLE A ============================== -->
+<section class="sample A active" id="sA">
+  <div class="wrap">
+    <div class="topline">
+      <div class="logo">NX<span>LIVE</span></div>
+      <nav class="nav">
+        <a class="on">라이브</a><a>게임별</a><a>e스포츠</a><a>클립</a><a>방송예정</a>
+      </nav>
+      <div class="topright">
+        <div class="search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9ea3ad" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+          게임·스트리머 검색
+        </div>
+        <button class="btn-acid">방송 시작</button>
+      </div>
+    </div>
+    <div class="statbar">
+      <span><b>1,240</b> 방송 중</span>
+      <span>실시간 시청자 <b>58.3만</b></span>
+      <span>오늘 신규 클립 <b>3,912</b></span>
+    </div>
+
+    <div class="bento">
+      <!-- featured 2x2 -->
+      <div class="tile feat">
+        <div class="thumb g-maple"></div><div class="grad"></div>
+        <span class="live"><span class="livedot"></span>LIVE</span>
+        <span class="views">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
+          42,180</span>
+        <div class="meta">
+          <div class="game">메이플스토리</div>
+          <div class="ttl">챔피언십 결승 — 5차 신규 보스 세계 최초 클리어 도전</div>
+          <div class="who"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B8FF2E" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg> 김레인저 · 팔로워 21.4만</div>
+        </div>
+      </div>
+      <!-- wide -->
+      <div class="tile wide">
+        <div class="thumb g-fc"></div><div class="grad"></div>
+        <span class="live"><span class="livedot"></span>LIVE</span>
+        <span class="views">18,902</span>
+        <div class="meta"><div class="game">FC ONLINE</div><div class="ttl">랭커 매치 · 감독 모드 실시간 공략</div><div class="who">코트니</div></div>
+      </div>
+      <div class="tile">
+        <div class="thumb g-dnf"></div><div class="grad"></div>
+        <span class="live"><span class="livedot"></span>LIVE</span>
+        <div class="meta"><div class="game">던전앤파이터</div><div class="ttl">레기온 레이드 트라이</div><div class="who">던파장인</div></div>
+      </div>
+      <div class="tile">
+        <div class="thumb g-blue"></div><div class="grad"></div>
+        <span class="live"><span class="livedot"></span>LIVE</span>
+        <div class="meta"><div class="game">블루 아카이브</div><div class="ttl">신규 이벤트 풀 클리어</div><div class="who">별밤</div></div>
+      </div>
+      <!-- category cards -->
+      <div class="tile cat">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#B8FF2E" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        <div class="k">지금 뜨는 클립</div><div class="n">1분 하이라이트 모아보기</div>
+      </div>
+      <div class="tile cat">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#B8FF2E" stroke-width="2"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1.5" fill="#B8FF2E"/></svg>
+        <div class="k">방송 예정</div><div class="n">알림 신청한 채널 24</div>
+      </div>
+      <div class="tile wide">
+        <div class="thumb g-kart"></div><div class="grad"></div>
+        <span class="live"><span class="livedot"></span>LIVE</span>
+        <span class="views">9,430</span>
+        <div class="meta"><div class="game">카트라이더 러쉬플러스</div><div class="ttl">스피드 개인전 랭킹전 — 티어 결정전</div><div class="who">부스터</div></div>
+      </div>
+      <div class="tile">
+        <div class="thumb g-sudden"></div><div class="grad"></div>
+        <span class="live"><span class="livedot"></span>LIVE</span>
+        <div class="meta"><div class="game">서든어택</div><div class="ttl">클랜전 실시간 중계</div><div class="who">헤드샷</div></div>
+      </div>
+      <div class="tile">
+        <div class="thumb g-mabi"></div><div class="grad"></div>
+        <span class="live"><span class="livedot"></span>LIVE</span>
+        <div class="meta"><div class="game">마비노기 모바일</div><div class="ttl">신규 지역 탐험</div><div class="who">음유시인</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== SAMPLE B ============================== -->
+<section class="sample B" id="sB">
+  <div class="split">
+    <div class="left">
+      <div class="brandrow">
+        <div class="logo">NX<em>live</em></div>
+        <nav><a class="on">발견</a><a>랭킹</a><a>e스포츠</a><a>구독</a></nav>
+      </div>
+      <div class="kick">Featured Broadcast · 오늘의 프리미엄</div>
+      <h1 class="headline">가장 뜨거운 순간을, 가장 선명하게.</h1>
+      <p class="sub">넥슨의 모든 게임 라이브를 한 곳에서. 큐레이션된 프리미엄 방송과 실시간 e스포츠를 4K로 감상하세요.</p>
+      <div class="cta">
+        <button class="g">지금 시청하기</button>
+        <button class="o">채널 둘러보기</button>
+      </div>
+      <div class="feature-card">
+        <div class="pv g-dnf"><span class="lv">LIVE</span></div>
+        <div class="info">
+          <div class="g">DUNGEON &amp; FIGHTER · e스포츠</div>
+          <div class="t">2026 DFC 스프링 파이널</div>
+          <div class="m">지금 시청 중 <b>31,204</b>명 · 3세트 진행</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right">
+      <h3><span class="livedot"></span> 실시간 인기 랭킹</h3>
+      <div class="list">
+        <div class="row">
+          <div class="rank">1</div>
+          <div class="rthumb g-maple"><span class="v">42.1K</span></div>
+          <div class="rinfo"><div class="t">신규 보스 세계 최초 클리어 도전</div><div class="m">김레인저 · 메이플스토리</div><span class="tag">챔피언십</span></div>
+        </div>
+        <div class="row">
+          <div class="rank">2</div>
+          <div class="rthumb g-fc"><span class="v">18.9K</span></div>
+          <div class="rinfo"><div class="t">랭커 매치 · 감독 모드 실시간 공략</div><div class="m">코트니 · FC ONLINE</div><span class="tag">공략</span></div>
+        </div>
+        <div class="row">
+          <div class="rank">3</div>
+          <div class="rthumb g-kart"><span class="v">9.4K</span></div>
+          <div class="rinfo"><div class="t">스피드 개인전 티어 결정전</div><div class="m">부스터 · 카트라이더</div><span class="tag">랭킹전</span></div>
+        </div>
+        <div class="row">
+          <div class="rank">4</div>
+          <div class="rthumb g-blue"><span class="v">7.7K</span></div>
+          <div class="rinfo"><div class="t">신규 이벤트 풀 클리어</div><div class="m">별밤 · 블루 아카이브</div><span class="tag">이벤트</span></div>
+        </div>
+        <div class="row">
+          <div class="rank">5</div>
+          <div class="rthumb g-sudden"><span class="v">6.1K</span></div>
+          <div class="rinfo"><div class="t">클랜전 실시간 중계</div><div class="m">헤드샷 · 서든어택</div><span class="tag">대전</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== SAMPLE C ============================== -->
+<section class="sample C" id="sC">
+  <div class="wrap">
+    <div class="head">
+      <div class="logo">NX<span>LIVE</span></div>
+      <nav><a class="on">LIVE</a><a>탐색</a><a>e스포츠</a><a>크리에이터</a></nav>
+      <div class="r">
+        <span class="chip">⌕ 검색</span>
+        <button class="go">방송 시작</button>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="layer">
+        <!-- hero -->
+        <div class="hero">
+          <div class="glowline"></div>
+          <div class="thumb g-maple" style="position:absolute;inset:0;opacity:.9"></div>
+          <span class="lv"><span class="livedot"></span> LIVE</span>
+          <span class="vw">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#22E0D6" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
+            42,180 시청 중</span>
+          <div class="cap">
+            <div class="g">MAPLESTORY · CHAMPIONSHIP</div>
+            <div class="t">신규 보스 세계 최초 클리어 도전</div>
+            <div class="who"><span class="av"></span> 김레인저 · 팔로워 21.4만 · 4K 60fps</div>
+          </div>
+        </div>
+
+        <!-- side panels -->
+        <div class="side">
+          <div class="panel">
+            <h4><span class="livedot"></span> 실시간 통계</h4>
+            <div class="metric"><span class="lab">동시 방송</span><span class="val cy">1,240</span></div>
+            <div class="metric"><span class="lab">실시간 시청자</span><span class="val mag">583,402</span></div>
+            <div class="metric"><span class="lab">오늘 신규 클립</span><span class="val cy">3,912</span></div>
+          </div>
+          <div class="panel">
+            <h4>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22E0D6" stroke-width="2"><path d="M3 12h3l2-7 4 14 3-9 2 2h4"/></svg>
+              급상승 채널
+            </h4>
+            <div class="minirow"><div class="mt g-dnf"></div><div class="mi"><div class="t">레기온 레이드 트라이</div><div class="m">던파장인 · 던전앤파이터</div></div><div class="n">+312%</div></div>
+            <div class="minirow"><div class="mt g-blue"></div><div class="mi"><div class="t">신규 이벤트 클리어</div><div class="m">별밤 · 블루 아카이브</div></div><div class="n">+188%</div></div>
+            <div class="minirow"><div class="mt g-mabi"></div><div class="mi"><div class="t">신규 지역 탐험</div><div class="m">음유시인 · 마비노기</div></div><div class="n">+147%</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="catrow">
+        <div class="catcard"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#22E0D6" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg><div class="k">전체 라이브</div><div class="n">1,240</div></div>
+        <div class="catcard"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#22E0D6" stroke-width="2"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M8 7V4h8v3"/></svg><div class="k">e스포츠</div><div class="n">18 경기</div></div>
+        <div class="catcard"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#22E0D6" stroke-width="2"><path d="M6 9l6-6 6 6"/><rect x="4" y="9" width="16" height="12" rx="2"/></svg><div class="k">클립</div><div class="n">3,912</div></div>
+        <div class="catcard"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#22E0D6" stroke-width="2"><path d="M12 2a3 3 0 0 1 3 3v7a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/></svg><div class="k">토크</div><div class="n">64 채널</div></div>
+        <div class="catcard"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#22E0D6" stroke-width="2"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3"/></svg><div class="k">방송예정</div><div class="n">24 예약</div></div>
+        <div class="catcard"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#22E0D6" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><div class="k">팔로잉</div><div class="n">21 채널</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const bar=document.getElementById('tab-bar');
+  bar.addEventListener('click',e=>{
+    const b=e.target.closest('button[data-t]'); if(!b) return;
+    bar.querySelectorAll('button').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    document.querySelectorAll('.sample').forEach(s=>s.classList.remove('active'));
+    document.getElementById('s'+b.dataset.t).classList.add('active');
+    window.scrollTo(0,0);
+  });
+</script>
+</body>
+</html>
