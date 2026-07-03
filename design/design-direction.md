@@ -31,6 +31,9 @@
 | **A. Broadcast Bento** | 역동성 — 라이브 채널 모자이크 | 비대칭 벤토 그리드(크기 다른 타일) | 애시드 라임 `#B8FF2E` on `#101014` | Space Grotesk + Black Han Sans + Gothic A1 |
 | **B. Cinematic Split** | 세련됨/고급감 — 에디토리얼 | 분할 스크린(좌 피처드 / 우 리스트) | 앰버 골드 `#F0A93B` on `#16130F` | Fraunces + Gowun Batang + Gothic A1 |
 | **C. Neon Depth** | 혁신/모던함 — 레이어드 네온 | 겹치는 패널 + 대각선 깊이 | 네온 시안 `#22E0D6` + 마젠타 `#FF3D9A` on `#0B0E17` | Space Grotesk + Orbitron + Gothic A1 |
+| **N. NX Basic 1.0v** | 넥슨 사내 디자인 시스템 — 정갈한 프로덕트 | 라이트 앱바+Tab / Card 그리드 / 랭킹 패널 | 블루 `pc-800 #0a74ff` + bc 뉴트럴 on `lb-200 #f9fafb` | Pretendard/Gothic A1 · type-default-16 |
+
+> **N(NX Basic)**: `nxbasic-mcp` 실제 토큰(컬러 49종 중 pc-800 #0a74ff 프라이머리, bc 뉴트럴, type-default-16)과 컴포넌트(Tab·Card·Badge·Tag·Search·Button)로 구현. A/B/C(웹 리서치·다크)와 달리 라이트 테마 · 사내 시스템 준수형. 선택 시 `DESIGN_SYSTEM=nxbasic`.
 
 > 각 방향은 레이아웃 구조·Primary 컬러·폰트가 서로 다르며, 중앙 히어로 패턴을 쓰지 않는다.
 > AI 클리셰(인디고 #6366f1, Poppins+Inter, glassmorphism 남용, 이모지 아이콘) 배제.
