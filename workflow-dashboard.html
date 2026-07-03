@@ -70,6 +70,8 @@ header .pill b{color:var(--pc-500)}
 .chip.decision{background:var(--g-100);color:var(--g-300)}
 .chip.policy{background:var(--pp-100);color:var(--pp-300)}
 .chip.blocked{background:#fde1e1;color:var(--r-300)}
+.chip.skill{background:var(--pc-100);color:var(--pc-900)}
+.ev.skill .mk{border-color:var(--pc-800)}
 .ev .ti{font-weight:700;font-size:14px;margin-top:4px}
 .ev .de{font-size:13px;color:var(--bc-700);margin-top:3px}
 .ev .sk{margin-top:7px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
@@ -141,7 +143,7 @@ footer{color:var(--bc-500);font-size:12px;text-align:center;padding:26px 0 40px}
       <span class="pill">프로젝트 <b>NXlive</b></span>
       <span class="pill">디자인 <b>NX Basic 1.0v (C)</b></span>
       <span class="pill">프론트 <b>Next.js 15 · React 19</b></span>
-      <span class="pill">상태 <b>세팅 완료</b></span>
+      <span class="pill">상태 <b>명세(create-spec) 진행 중</b></span>
       <span class="pill">기준일 <b>2026-07-03</b></span>
     </div>
   </div>
@@ -152,7 +154,7 @@ footer{color:var(--bc-500);font-size:12px;text-align:center;padding:26px 0 40px}
   <div class="stepper">
     <div class="step done"><div class="n">STEP 1</div><div class="t">설치</div><div class="s">✓ 완료</div><span class="badge">📦</span></div>
     <div class="step done"><div class="n">STEP 2</div><div class="t">세팅</div><div class="s">✓ 완료</div><span class="badge">⚙️</span></div>
-    <div class="step current"><div class="n">STEP 3</div><div class="t">명세</div><div class="s">▶ 다음 단계</div><span class="badge">📝</span></div>
+    <div class="step current"><div class="n">STEP 3</div><div class="t">명세</div><div class="s">▶ 진행 중</div><span class="badge">📝</span></div>
     <div class="step todo"><div class="n">STEP 4</div><div class="t">구현</div><div class="s">대기</div><span class="badge">🛠️</span></div>
     <div class="step todo"><div class="n">STEP 5</div><div class="t">점검</div><div class="s">대기</div><span class="badge">🔍</span></div>
     <div class="step todo"><div class="n">STEP 6</div><div class="t">배포</div><div class="s">대기</div><span class="badge">🚀</span></div>
@@ -160,10 +162,10 @@ footer{color:var(--bc-500);font-size:12px;text-align:center;padding:26px 0 40px}
 
   <!-- stats -->
   <div class="stats">
-    <div class="stat"><div class="v">6</div><div class="l">완료 스테이지</div></div>
-    <div class="stat"><div class="v">7</div><div class="l">확정 결정(DECISION)</div></div>
-    <div class="stat"><div class="v">10</div><div class="l">커밋</div></div>
+    <div class="stat"><div class="v">9</div><div class="l">확정 결정(DECISION)</div></div>
+    <div class="stat"><div class="v">15</div><div class="l">커밋</div></div>
     <div class="stat"><div class="v">4</div><div class="l">디자인 안 (A·B·C·N)</div></div>
+    <div class="stat"><div class="v">5</div><div class="l">프로토타입 페이지</div></div>
     <div class="stat"><div class="v warn">1</div><div class="l">보류(BLOCKED)</div></div>
   </div>
 
@@ -184,6 +186,10 @@ footer{color:var(--bc-500);font-size:12px;text-align:center;padding:26px 0 40px}
         <div class="ev setup"><div class="mk"></div><div class="top"><span class="chip setup">SETUP</span><span class="time">15:20</span></div><div class="ti">계층형 CLAUDE.md 분리</div><div class="de">frontend/CLAUDE.md 생성 · GNB 섹션 제거 · 백엔드 deferred</div><div class="sk"><span class="skt">🧩 boilerplate-setup · Stage 2</span></div></div>
         <div class="ev decision"><div class="mk"></div><div class="top"><span class="chip decision">DECISION</span><span class="time">15:21</span></div><div class="ti">E2E = Playwright · 인증/인프라</div><div class="de">Playwright(실제 설정은 Step 2.7) · auth=none · infra=deferred</div><div class="sk"><span class="skt">🧩 boilerplate-setup · Stage 2-E / 3~4</span></div></div>
         <div class="ev setup"><div class="mk"></div><div class="top"><span class="chip setup">SETUP</span><span class="time">15:21</span></div><div class="ti">✅ boilerplate-setup 완료</div><div class="de">세팅 위저드 종료 → 다음: create-spec</div><div class="sk"><span class="skt">🧩 boilerplate-setup · 완료</span></div></div>
+        <div class="ev skill"><div class="mk"></div><div class="top"><span class="chip skill">SKILL</span><span class="time">15:58</span></div><div class="ti">create-spec — STEP 0 게이트 통과 + spec.md 초안</div><div class="de">메인 기능=라이브 시청 확정 · MVP 5페이지 · 전부 Mock · specs/001-nxlive-live-streaming/spec.md</div><div class="sk"><span class="skt">🧩 create-spec · Step 0.5~2</span></div></div>
+        <div class="ev decision"><div class="mk"></div><div class="top"><span class="chip decision">DECISION</span><span class="time">16:00</span></div><div class="ti">상태관리 = Zustand · 의존성 = 전부 자체개발(Mock)</div><div class="de">엔티티 5개(Channel/Live/Clip/ChatMessage/User) → Zustand · 외부연동 없음(후속)</div><div class="sk"><span class="skt">🧩 create-spec · Step 2.5</span></div></div>
+        <div class="ev skill"><div class="mk"></div><div class="top"><span class="chip skill">SKILL</span><span class="time">16:07</span></div><div class="ti">create-spec Step 2.7 — UI 프로토타입 구현</div><div class="de">Next.js 15 + React 19 + NX Basic · 5페이지(홈/시청/채널/클립/검색) Mock · build 통과 · 5라우트 200 OK</div><div class="sk"><span class="skt">🧩 create-spec · Step 2.7</span><span class="skt tool">⚛ Next.js/React</span></div></div>
+        <div class="ev decision"><div class="mk" style="border-color:#ffbb00;background:#fff"></div><div class="top"><span class="chip" style="background:#fff2d1;color:#8a6d00">확인 대기</span><span class="time">now</span></div><div class="ti">⏸ 프로토타입 사용자 확인 대기</div><div class="de">http://localhost:3000 · A(승인 → Step 2.8) / B(피드백)</div><div class="sk"><span class="skt na">create-spec Step 2.7 승인 대기</span></div></div>
       </div>
     </div>
 
@@ -191,9 +197,9 @@ footer{color:var(--bc-500);font-size:12px;text-align:center;padding:26px 0 40px}
     <div>
       <div class="next">
         <div class="k">Next Step</div>
-        <h3>명세 작성 (create-spec)</h3>
-        <p>spec.md → plan.md → tasks.md 생성. Step 2.7에서 Next.js + NX Basic UI 프로토타입(확정 C 방향)과 Playwright를 함께 구성.</p>
-        <div class="cmd">💬 create-spec 실행해줘</div>
+        <h3>프로토타입 확인 → 승인</h3>
+        <p>http://localhost:3000 에서 5페이지 확인 후, 승인(A) 시 Step 2.8(타입 확정) → decisions · plan · data-model · api-spec · tasks 생성.</p>
+        <div class="cmd">💬 A (승인) &nbsp;/&nbsp; B (피드백)</div>
       </div>
 
       <div class="card" style="margin-bottom:14px">
@@ -211,9 +217,10 @@ footer{color:var(--bc-500);font-size:12px;text-align:center;padding:26px 0 40px}
       <div class="card">
         <h2><span class="dot"></span> 산출물</h2>
         <ul class="files">
-          <li><code>design/design-direction.md</code><span class="m">방향 확정</span></li>
           <li><code>design/samples.html</code><span class="m">4안 (A·B·C·N)</span></li>
-          <li><code>frontend/CLAUDE.md</code><span class="m">FE 규칙</span></li>
+          <li><code>design/design-direction.md</code><span class="m">방향 확정</span></li>
+          <li><code>specs/001-…/spec.md</code><span class="m">기능 명세</span></li>
+          <li><code>frontend/ (Next.js)</code><span class="m">5페이지 Mock</span></li>
           <li><code>.claude/state.json</code><span class="m">머신 상태</span></li>
           <li><code>PROGRESS.md</code><span class="m">세션 복귀</span></li>
         </ul>
@@ -244,12 +251,12 @@ footer{color:var(--bc-500);font-size:12px;text-align:center;padding:26px 0 40px}
         </div>
       </div>
       <div class="smcol current">
-        <div class="ph">📝 명세</div><div class="st">▶ 현재 단계</div>
+        <div class="ph">📝 명세</div><div class="st">▶ 진행 중</div>
         <div class="sklist">
-          <div class="skitem now"><span class="badge">▶</span> create-spec<br>spec→plan→tasks · Step 2.7 UI</div>
-          <div class="skitem plan"><span class="badge">○</span> write-scenario</div>
-          <div class="skitem plan"><span class="badge">○</span> reference-proposal</div>
-          <div class="skitem plan"><span class="badge">○</span> ui-design-workflow</div>
+          <div class="skitem now"><span class="badge">▶</span> create-spec<br>spec✓ · Step2.5✓ · 프로토타입✓ · 승인대기</div>
+          <div class="skitem skip"><span class="badge">⤬</span> write-scenario<br>create-spec STEP0에 통합</div>
+          <div class="skitem skip"><span class="badge">⤬</span> reference-proposal<br>통합</div>
+          <div class="skitem skip"><span class="badge">⤬</span> ui-design-workflow<br>통합</div>
           <div class="skitem plan"><span class="badge">○</span> check-decision-gates</div>
         </div>
       </div>
