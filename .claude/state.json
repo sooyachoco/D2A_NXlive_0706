@@ -2,7 +2,11 @@
   "project_name": "NXlive",
   "project_type": "new",
   "target_users": "external",
-  "impression_keywords": ["혁신/모던함", "역동성", "세련됨/고급감"],
+  "impression_keywords": [
+    "혁신/모던함",
+    "역동성",
+    "세련됨/고급감"
+  ],
   "design_system": "nxbasic",
   "design_direction": "C — NX Basic 다크+라이트 하이브리드 (상단 다크 bc-1000/db, 하단 라이트 pc-800)",
   "frontend_framework": "react",
@@ -14,5 +18,9 @@
   "auth_profile": "none",
   "local_dev_host": "local-nxlive.test",
   "https_ready": false,
-  "https_deferred": true
+  "https_deferred": true,
+  "e2e_framework": "playwright",
+  "e2e_setup": "deferred-to-create-spec-2.7",
+  "infra": "deferred",
+  "setup_stage": "boilerplate-setup-complete"
 }

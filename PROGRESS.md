@@ -13,12 +13,20 @@
 
 | 항목 | 값 |
 |---|---|
-| **현재 단계** | Phase A — 사전 준비 |
-| **상태** | ⏳ 진행 중 |
-| **마지막 작업** | — |
-| **세션 체크포인트** | — |
+| **현재 단계** | Phase D — 프로젝트 세팅 위저드 (boilerplate-setup) **완료** |
+| **상태** | ✅ 완료 → 다음: create-spec |
+| **마지막 작업** | 기술스택 확정(Next.js15/React19/TS·NX Basic·BE 나중·Playwright·auth none) |
+| **세션 체크포인트** | 2026-07-03 boilerplate-setup 완료 |
 | **review_status** | — |
-| **다음 행동** | 아래 참조 |
+| **다음 행동** | `create-spec 실행해줘` (spec.md → plan.md → tasks.md, Step 2.7에서 Next.js+NX Basic UI 프로토타입) |
+
+**확정 사항 요약**
+- 프로젝트: NXlive — 넥슨 게임 라이브 스트리밍 (외부 유저, 신규)
+- 디자인: **C — NX Basic 1.0v 다크+라이트** (DESIGN_SYSTEM=nxbasic)
+- 프론트: Next.js 15 (App Router) + React 19 + TS + NX Basic / 데이터 더미 우선
+- 백엔드: 나중 결정 (deferred) · 인프라: deferred
+- E2E: Playwright (실제 설정은 create-spec Step 2.7) · 인증: none (host local-nxlive.test)
+- HTTPS/Caddy: Windows 미지원으로 연기 (BLOCKED 기록)
 
 > 상태 값: ⏳ 진행 중 / ⏸️ 사용자 확인 대기 / 🔄 세션 체크포인트 / ✅ 완료
 >
@@ -47,13 +55,13 @@
 ## Phase 체크리스트
 
 ### Phase A~C: 환경 설정
-- [ ] 보일러플레이트 설치
-- [ ] 참조 문서 확인 (refs/company-policies/, refs/gamescale-docs/)
-- [ ] Cursor 재시작
+- [x] 보일러플레이트 설치
+- [x] 참조 문서 확인 (refs/company-policies/, refs/gamescale-docs/)
+- [x] MCP 서버 빌드
 
 ### Phase D: 프로젝트 세팅 위저드
-- [ ] PRD 입력 또는 질문 응답 (Q1~Q4)
-- [ ] Q5* 디자인 샘플 선택
+- [x] 질문 응답 (Q1~Q4) — PRD 없음
+- [x] Q5* 디자인 샘플 선택 — C (NX Basic 다크+라이트)
 - [ ] **Phase 0: React + Mock UI 구현**
   - [ ] React 프로젝트 초기화 + 디자인 시스템 셋업
   - [ ] 공통 레이아웃 + GNB/INSIGN 연동
