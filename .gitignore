@@ -1,0 +1,30 @@
+# ── OS ──
+.DS_Store
+Thumbs.db
+
+# ── 보일러플레이트 소스 마커 (레거시, 폐기됨) ──
+.boilerplate-source
+
+# ── 보일러플레이트 문서·디자인 (gitignored, 실수 커밋 방지) ──
+docs/
+/design/
+PRD.md
+
+# ── 런타임 생성물 (레포 루트) ──
+/.claude/
+/logs/
+
+# D2A harness — MCP 상태·세션·토큰 (로컬 전용, 커밋 금지)
+.claude/state.json
+.claude/session-stamp
+.claude/hook-errors.log
+.claude/review-token-secret
+.claude/review-tokens/
+.claude/traces/
+
+# D2A harness — 로컬 MCP 설정 (경로가 머신마다 다름)
+.mcp.json
+
+# D2A refs — 사내 민감 문서 (사내망 전용, 외부 유출 금지)
+refs/company-policies/
+refs/gamescale-docs/

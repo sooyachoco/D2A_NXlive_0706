@@ -1,0 +1,42 @@
+# D2A Boilerplate Template Version
+
+version: 1.5.0
+released: 2026-05-07
+
+## 변경 이력
+
+### 1.5.0 (2026-05-07)
+- `d2a-mcp-server/src/tools/phase-gate.ts` GNB 검증 후보 확장: `frontend/index.html`(Vite SPA), `frontend/src/app/layout.tsx`·`frontend/app/layout.tsx`(Next.js App Router) 추가 — `create-spec` Step 2.7 방안 A 패턴이 게이트를 통과하도록 정합성 보강
+- `phase-gate.ts` `specs/` 스캔 시 dot-prefix 디렉토리(`.template`, `.git` 등) 제외 — `specs/.template/decisions.md` placeholder(`🔴 미결정`)로 인한 false positive와 `specs/.template/integration-ready.md` placeholder로 인한 false negative 차단
+- GNB 미발견 시 안내 메시지를 패턴별 후보 경로 모두 노출하도록 일반화
+- `phase-gate.test.ts` 회귀 테스트 4건 추가 (총 73건): Next.js layout.tsx 통과 / Vite index.html 통과 / `.template` placeholder 무시 / `.template` integration-ready 가짜 통과 차단
+
+### 1.4.0 (2026-04-28)
+- `subagent-review.md` Step 2-2 추가: 동시성(TOCTOU), 보안 신뢰 경계, 타임존, 집계 정확도 체크리스트 (메인 에이전트 직접 실행)
+- `subagent-review.md` Step 3/5 강화: `Blocker(즉시수정)` 분류 신설 — 보안·레이스 컨디션·인증 아키텍처 결함은 Phase 완료 전 수정 필수, Advisory 이월 금지
+- `backend/CLAUDE.md` API Route 필수 규칙 추가: 사용자 식별 헬퍼 함수 경유, 복합 쓰기 트랜잭션, TOCTOU 방지, 집계 `_count`, 타임존 `getKSTToday` 유틸리티
+- `refs/policies/authentication-external.md` INSIGN 인증 패턴 3가지 추가: GNB retry 폴링, middleware pass-through(페이지 인증 금지), `useRequireAuth` 클라이언트 라우트 가드. `NEXT_PUBLIC_DEV_UID` 사용 금지 명시.
+- `collect-prerequisites.md` Step 3.6 추가: INSIGN 프로젝트 로컬 필수 변수 검증 (DEV_UID/DEV_MEMBER_SN 확인, NEXT_PUBLIC_ 역방향 경고, BACKEND_URL self-proxy 경고)
+- `pre-launch-check.md` Step 2-D 추가: 반복 버그 패턴 자동 스캔 (self-proxy, 인증 아키텍처, SSR/하이드레이션, DB 안전성, 보안 신뢰 경계)
+- `specs/.template/PROGRESS.md` Phase G 트리거 조건 명확화: 모든 Feature Phase 완료 직후 자동 진입, `pre-launch-check` 연계, 완료 기준 체크리스트
+- `boilerplate-setup.md` Stage 0에 D2A gitignore 섹션 자동 추가: `.claude/state.json`, `review-tokens/`, `traces/`, `refs/company-policies/`, `refs/gamescale-docs/`, `.mcp.json` 파생 프로젝트에 자동 삽입
+
+### 1.3.0 (2026-04-23)
+- `T{N}-review` 예약 ID 패턴 공식화 (CLAUDE.md)
+- `pre-launch-check` 스킬에 Phase 7 태스크 자동 생성 절차 추가 (Step 2-C)
+- `coverage:` done 타입 예시 개선 (tasks.md)
+
+### 1.2.0 (2026-04-22)
+- `coverage:` done 타입 추가 (6번째 타입)
+- 리뷰 심각도 체계 3단계 → 4단계 (Blocker/Required/Advisory/Info)
+- `validate_task_done` coverage 리포트 검증 로직 추가
+
+### 1.1.0 (2026-04-21)
+- `boilerplate-setup` 시작 시 활동 로그 자동 초기화
+- `samples-guide` 패턴 C 추가
+
+### 1.0.0 (초기 릴리즈)
+- Phase 0~N 자율 실행 (run-phase)
+- MCP 하네스 (check_phase_gate, validate_task_done, get_next_task, submit_task)
+- subagent-review 6명 병렬 리뷰
+- done 기준 5가지 타입 (file, cmd, contains, regex, json)
