@@ -182,7 +182,73 @@ ul{list-style:none}
 .g-blue{background:linear-gradient(135deg,#38bdf8,#818cf8)}
 .g-kart{background:linear-gradient(135deg,#ffb03a,#ff6b3a)}
 
+/* =================================================================
+   SAMPLE N — NX BASIC 1.0v  (넥슨 사내 디자인 시스템 / 라이트 / 블루 pc-800)
+   토큰: color-pc-800 #0a74ff · bc-* 뉴트럴 · lb-* 배경 · type-default-16
+   ================================================================= */
+.NX{--pc-800:#0a74ff;--pc-900:#0056c7;--pc-100:#ecf1f9;--pc-200:#cce2ff;
+  --bc-1000:#17191c;--bc-900:#3d4148;--bc-700:#747a86;--bc-600:#8f96a3;--bc-500:#a1a7b5;--bc-300:#c6ccd7;--bc-200:#d2d6e0;--bc-100:#e8ebf2;
+  --lb-100:#fcfcfd;--lb-200:#f9fafb;--lb-300:#eef1f6;--r-200:#ef5d5d;--g-300:#26a138;--y-200:#ffbb00;--white:#fff;
+  background:var(--lb-200);color:var(--bc-1000);
+  font-family:'Pretendard','Gothic A1',sans-serif;letter-spacing:-.35px;line-height:1.5}
+/* 상단 앱바 */
+.NX .appbar{background:var(--white);border-bottom:1px solid var(--bc-100);position:sticky;top:52px;z-index:50}
+.NX .appbar .in{max-width:1440px;margin:0 auto;display:flex;align-items:center;gap:20px;padding:0 32px;height:60px}
+.NX .brand{font-weight:800;font-size:20px;color:var(--bc-1000)}
+.NX .brand span{color:var(--pc-800)}
+/* Tab 컴포넌트 */
+.NX .tabs{display:flex;gap:4px;height:100%}
+.NX .tabs a{display:flex;align-items:center;padding:0 16px;font-size:15px;font-weight:600;color:var(--bc-600);border-bottom:2px solid transparent}
+.NX .tabs a.on{color:var(--pc-800);border-bottom-color:var(--pc-800)}
+.NX .tabs a:hover{color:var(--bc-1000)}
+.NX .appbar .right{margin-left:auto;display:flex;align-items:center;gap:10px}
+/* Search 컴포넌트 */
+.NX .field{display:flex;align-items:center;gap:8px;background:var(--lb-300);border:1px solid var(--bc-100);border-radius:8px;padding:9px 12px;color:var(--bc-600);font-size:14px;min-width:240px}
+/* Button 컴포넌트 (filled primary) */
+.NX .btn{border-radius:8px;font-weight:700;font-size:15px;padding:10px 18px;transition:background .15s}
+.NX .btn.filled{background:var(--pc-800);color:var(--white)}
+.NX .btn.filled:hover{background:var(--pc-900)}
+.NX .btn.outlined{background:var(--white);color:var(--pc-800);border:1px solid var(--pc-800)}
+/* 본문 */
+.NX .body{max-width:1440px;margin:0 auto;padding:28px 32px 60px}
+.NX .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+/* Tag 컴포넌트 */
+.NX .tag{font-size:13px;font-weight:600;padding:7px 14px;border-radius:999px;border:1px solid var(--bc-200);background:var(--white);color:var(--bc-700);cursor:pointer}
+.NX .tag.on{background:var(--pc-100);border-color:var(--pc-200);color:var(--pc-900)}
+.NX .sect{display:flex;align-items:center;gap:10px;margin:6px 0 16px}
+.NX .sect h2{font-size:20px;font-weight:800}
+.NX .sect .count{font-size:14px;color:var(--bc-600);font-weight:600}
+.NX .layout{display:grid;grid-template-columns:1fr 348px;gap:24px;align-items:start}
+/* Card 컴포넌트 그리드 */
+.NX .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.NX .card{background:var(--white);border:1px solid var(--bc-100);border-radius:12px;overflow:hidden;transition:box-shadow .16s,transform .16s}
+.NX .card:hover{box-shadow:0 8px 24px rgba(23,25,28,.10);transform:translateY(-3px)}
+.NX .card .thumb{height:150px;position:relative}
+/* Badge 컴포넌트 (LIVE) */
+.NX .badge-live{position:absolute;top:10px;left:10px;background:var(--r-200);color:#fff;font-size:11px;font-weight:800;padding:4px 8px;border-radius:6px;display:flex;align-items:center;gap:5px;letter-spacing:.3px}
+.NX .badge-live .livedot{background:#fff}
+.NX .card .vw{position:absolute;bottom:10px;right:10px;background:rgba(23,25,28,.72);color:#fff;font-size:12px;font-weight:700;padding:3px 8px;border-radius:6px}
+.NX .card .b{padding:14px 15px 16px}
+.NX .card .ct{font-size:16px;font-weight:700;line-height:1.35;color:var(--bc-1000);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.NX .card .cm{display:flex;align-items:center;gap:8px;margin-top:10px;color:var(--bc-700);font-size:13px}
+.NX .card .av{width:22px;height:22px;border-radius:50%;background:var(--bc-200);flex:none}
+.NX .card .ctag{display:inline-block;margin-top:11px;font-size:11px;font-weight:700;color:var(--pc-800);background:var(--pc-100);padding:3px 9px;border-radius:6px}
+/* 우측 랭킹 패널 (Table 스타일) */
+.NX .rank-panel{background:var(--white);border:1px solid var(--bc-100);border-radius:12px;padding:20px}
+.NX .rank-panel h3{font-size:16px;font-weight:800;display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.NX .rank-panel .desc{font-size:13px;color:var(--bc-600);margin-bottom:12px}
+.NX .rk{display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--bc-100)}
+.NX .rk .num{font-weight:800;font-size:15px;color:var(--pc-800);width:20px;text-align:center;flex:none}
+.NX .rk .rt{width:56px;height:34px;border-radius:6px;flex:none}
+.NX .rk .ri{flex:1;min-width:0}
+.NX .rk .ri .t{font-size:14px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.NX .rk .ri .m{font-size:12px;color:var(--bc-600);margin-top:2px}
+.NX .rk .n{font-size:13px;font-weight:700;color:var(--bc-900)}
+.NX .note{margin-top:16px;font-size:12px;color:var(--bc-500);text-align:center;line-height:1.6}
+
 @media (max-width:1080px){
+  .NX .layout{grid-template-columns:1fr}
+  .NX .cards{grid-template-columns:repeat(2,1fr)}
   .A .bento{grid-template-columns:repeat(2,1fr)}
   .A .feat{grid-column:span 2}
   .B .split{grid-template-columns:1fr}
@@ -201,7 +267,8 @@ ul{list-style:none}
   <button data-t="A" class="active">A · Broadcast Bento</button>
   <button data-t="B">B · Cinematic Split</button>
   <button data-t="C">C · Neon Depth</button>
-  <span class="hint">역동성 · 세련됨 · 혁신 — 방향을 비교해 A / B / C 선택</span>
+  <button data-t="N">N · NX Basic 1.0v</button>
+  <span class="hint">A/B/C(웹 리서치·다크) vs N(넥슨 사내 디자인 시스템·라이트) 비교</span>
 </div>
 
 <!-- ============================== SAMPLE A ============================== -->
@@ -401,6 +468,94 @@ ul{list-style:none}
         <div class="catcard"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#22E0D6" stroke-width="2"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3"/></svg><div class="k">방송예정</div><div class="n">24 예약</div></div>
         <div class="catcard"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#22E0D6" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><div class="k">팔로잉</div><div class="n">21 채널</div></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== SAMPLE N (NX Basic 1.0v) ============================== -->
+<section class="sample NX" id="sN">
+  <div class="appbar">
+    <div class="in">
+      <div class="brand">NX<span>live</span></div>
+      <nav class="tabs">
+        <a class="on">라이브</a><a>게임별</a><a>e스포츠</a><a>클립</a><a>팔로잉</a>
+      </nav>
+      <div class="right">
+        <div class="field">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8f96a3" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+          게임·스트리머 검색
+        </div>
+        <button class="btn outlined">로그인</button>
+        <button class="btn filled">방송 시작</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="filters">
+      <span class="tag on">전체</span>
+      <span class="tag">메이플스토리</span>
+      <span class="tag">던전앤파이터</span>
+      <span class="tag">FC ONLINE</span>
+      <span class="tag">서든어택</span>
+      <span class="tag">블루 아카이브</span>
+      <span class="tag">카트라이더</span>
+      <span class="tag">마비노기</span>
+    </div>
+
+    <div class="layout">
+      <div class="main">
+        <div class="sect"><h2>지금 라이브</h2><span class="count">1,240개 방송 중</span></div>
+        <div class="cards">
+          <div class="card">
+            <div class="thumb g-maple"><span class="badge-live"><span class="livedot"></span>LIVE</span><span class="vw">42,180</span></div>
+            <div class="b"><div class="ct">신규 보스 세계 최초 클리어 도전</div>
+              <div class="cm"><span class="av"></span> 김레인저 · 팔로워 21.4만</div>
+              <span class="ctag">메이플스토리</span></div>
+          </div>
+          <div class="card">
+            <div class="thumb g-fc"><span class="badge-live"><span class="livedot"></span>LIVE</span><span class="vw">18,902</span></div>
+            <div class="b"><div class="ct">랭커 매치 · 감독 모드 실시간 공략</div>
+              <div class="cm"><span class="av"></span> 코트니 · 팔로워 8.9만</div>
+              <span class="ctag">FC ONLINE</span></div>
+          </div>
+          <div class="card">
+            <div class="thumb g-dnf"><span class="badge-live"><span class="livedot"></span>LIVE</span><span class="vw">14,510</span></div>
+            <div class="b"><div class="ct">레기온 레이드 실시간 트라이</div>
+              <div class="cm"><span class="av"></span> 던파장인 · 팔로워 12.1만</div>
+              <span class="ctag">던전앤파이터</span></div>
+          </div>
+          <div class="card">
+            <div class="thumb g-blue"><span class="badge-live"><span class="livedot"></span>LIVE</span><span class="vw">7,720</span></div>
+            <div class="b"><div class="ct">신규 이벤트 풀 클리어 방송</div>
+              <div class="cm"><span class="av"></span> 별밤 · 팔로워 6.3만</div>
+              <span class="ctag">블루 아카이브</span></div>
+          </div>
+          <div class="card">
+            <div class="thumb g-kart"><span class="badge-live"><span class="livedot"></span>LIVE</span><span class="vw">9,430</span></div>
+            <div class="b"><div class="ct">스피드 개인전 티어 결정전</div>
+              <div class="cm"><span class="av"></span> 부스터 · 팔로워 4.5만</div>
+              <span class="ctag">카트라이더</span></div>
+          </div>
+          <div class="card">
+            <div class="thumb g-sudden"><span class="badge-live"><span class="livedot"></span>LIVE</span><span class="vw">6,110</span></div>
+            <div class="b"><div class="ct">클랜전 실시간 중계</div>
+              <div class="cm"><span class="av"></span> 헤드샷 · 팔로워 5.0만</div>
+              <span class="ctag">서든어택</span></div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="rank-panel">
+        <h3><span class="livedot"></span> 실시간 인기 랭킹</h3>
+        <div class="desc">최근 10분 시청자 증가 기준</div>
+        <div class="rk"><span class="num">1</span><span class="rt g-maple"></span><div class="ri"><div class="t">세계 최초 보스 클리어 도전</div><div class="m">김레인저 · 메이플스토리</div></div><span class="n">42.1K</span></div>
+        <div class="rk"><span class="num">2</span><span class="rt g-fc"></span><div class="ri"><div class="t">랭커 매치 감독 모드</div><div class="m">코트니 · FC ONLINE</div></div><span class="n">18.9K</span></div>
+        <div class="rk"><span class="num">3</span><span class="rt g-dnf"></span><div class="ri"><div class="t">레기온 레이드 트라이</div><div class="m">던파장인 · 던전앤파이터</div></div><span class="n">14.5K</span></div>
+        <div class="rk"><span class="num">4</span><span class="rt g-kart"></span><div class="ri"><div class="t">스피드 개인전 결정전</div><div class="m">부스터 · 카트라이더</div></div><span class="n">9.4K</span></div>
+        <div class="rk"><span class="num">5</span><span class="rt g-blue"></span><div class="ri"><div class="t">신규 이벤트 풀 클리어</div><div class="m">별밤 · 블루 아카이브</div></div><span class="n">7.7K</span></div>
+        <div class="note">NX Basic 1.0v — Tab · Card · Badge · Tag · Search · Button 컴포넌트<br>토큰: pc-800 #0a74ff · bc 뉴트럴 · type-default-16</div>
+      </aside>
     </div>
   </div>
 </section>
