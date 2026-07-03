@@ -28,3 +28,7 @@ PRD.md
 # D2A refs — 사내 민감 문서 (사내망 전용, 외부 유출 금지)
 refs/company-policies/
 refs/gamescale-docs/
+
+# Next.js frontend
+frontend/node_modules/
+frontend/.next/
