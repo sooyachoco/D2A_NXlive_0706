@@ -1,5 +1,4 @@
-// NXlive 도메인 타입
-// rough — Step 2.8에서 UI 승인 후 컴포넌트 props 기반으로 재확정
+// NXlive 도메인 타입 — Step 2.8 확정 (승인된 UI 컴포넌트 props 기반)
 export type GameKey =
   | 'maple' | 'dnf' | 'fc' | 'sudden' | 'blue' | 'kart' | 'mabi' | 'baram';
 

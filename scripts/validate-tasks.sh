@@ -52,6 +52,7 @@ current_phase_num = None   # 0, 0.5, 1, 2, ...
 current_task = None
 current_task_line = 0
 task_fields = {}
+_last_field = None   # 멀티라인 bullet 수집 대상 필드 (done/read 등)
 
 def is_phase_0(num):
     return num is not None and float(num) == 0.0
@@ -80,8 +81,8 @@ def check_task(task_id, phase_num, fields, line_no):
         if not done_val or done_val in ['-', '—', '{검증 명령}']:
             errors.append(f"  L{line_no} [{task_id}] **done** 필드가 비어 있거나 플레이스홀더입니다")
 
-    # read 값 기본 검증
-    if 'read' in fields:
+    # read 값 기본 검증 (skill 태스크 — 예: subagent-review — 는 read=- 정상 허용)
+    if 'read' in fields and 'skill' not in fields:
         read_val = fields['read'].strip()
         if not read_val or read_val in ['-', '—', '{입력 파일}']:
             errors.append(f"  L{line_no} [{task_id}] **read** 필드가 비어 있거나 플레이스홀더입니다")
@@ -89,7 +90,7 @@ def check_task(task_id, phase_num, fields, line_no):
 # Phase 감지 패턴
 phase_header = re.compile(r'^##\s+Phase\s+([\d.]+)', re.IGNORECASE)
 # 태스크 감지 패턴: ### T001: ... 또는 ### T1-001: ...
-task_header = re.compile(r'^###\s+(T[\d\-]+)\s*:')
+task_header = re.compile(r'^###\s+(T\d[\w\-]*)\s*:')
 # 필드 패턴: **field**: value
 field_line = re.compile(r'^\*\*([\w\-]+)\*\*\s*:\s*(.*)')
 
@@ -118,15 +119,22 @@ for i, line in enumerate(lines, 1):
         current_task = tm.group(1)
         current_task_line = i
         task_fields = {}
+        _last_field = None
         continue
 
-    # 필드 라인 감지
+    # 필드 라인 감지 (+ 멀티라인 bullet 수집 — MCP tasks-parser 와 동일 동작)
     if current_task:
         fm = field_line.match(line)
         if fm:
             field_name = fm.group(1).lower()
             field_val = fm.group(2).strip()
             task_fields[field_name] = field_val
+            _last_field = field_name
+        else:
+            bm = re.match(r'^\s+[-*]\s+(.+)', line)
+            if bm and _last_field and bm.group(1).strip():
+                prev = task_fields.get(_last_field, '').strip()
+                task_fields[_last_field] = (prev + ' ' + bm.group(1).strip()).strip()
 
 # 마지막 태스크 검증
 if current_task:

@@ -1,0 +1,99 @@
+openapi: 3.0.3
+info:
+  title: NXlive API (계획 — Phase 2)
+  version: 0.1.0
+  description: >
+    현재는 Mock 서비스 레이어로 대체. 아래 계약은 frontend/services/*.ts 의
+    fetch 경로와 1:1 대응하며, Phase 2(백엔드 결정 후) 실제 구현 기준이 된다.
+servers:
+  - url: /api
+paths:
+  /lives:
+    get:
+      summary: 라이브 목록
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: { type: array, items: { $ref: '#/components/schemas/Live' } }
+  /lives/ranking:
+    get:
+      summary: 실시간 인기 랭킹 (시청자 수 내림차순)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: { type: array, items: { $ref: '#/components/schemas/Live' } }
+  /lives/{channelId}:
+    get:
+      summary: 라이브 상세
+      parameters:
+        - { name: channelId, in: path, required: true, schema: { type: string } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Live' } } } }
+        '404': { description: Not Found }
+  /channels:
+    get:
+      summary: 채널 목록
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { type: array, items: { $ref: '#/components/schemas/Channel' } } } } }
+  /channels/{channelId}:
+    get:
+      summary: 채널 상세
+      parameters:
+        - { name: channelId, in: path, required: true, schema: { type: string } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { $ref: '#/components/schemas/Channel' } } } }
+        '404': { description: Not Found }
+  /channels/{channelId}/clips:
+    get:
+      summary: 채널 클립 목록
+      parameters:
+        - { name: channelId, in: path, required: true, schema: { type: string } }
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { type: array, items: { $ref: '#/components/schemas/Clip' } } } } }
+  /clips:
+    get:
+      summary: 전체 클립 목록
+      responses:
+        '200': { description: OK, content: { application/json: { schema: { type: array, items: { $ref: '#/components/schemas/Clip' } } } } }
+components:
+  schemas:
+    GameKey:
+      type: string
+      enum: [maple, dnf, fc, sudden, blue, kart, mabi, baram]
+    Channel:
+      type: object
+      required: [id, name, followers, about, live, gameKey]
+      properties:
+        id: { type: string }
+        name: { type: string }
+        followers: { type: integer }
+        about: { type: string }
+        live: { type: boolean }
+        gameKey: { $ref: '#/components/schemas/GameKey' }
+    Live:
+      type: object
+      required: [id, channelId, channelName, title, gameKey, viewers, followers, category]
+      properties:
+        id: { type: string }
+        channelId: { type: string }
+        channelName: { type: string }
+        title: { type: string }
+        gameKey: { $ref: '#/components/schemas/GameKey' }
+        viewers: { type: integer }
+        followers: { type: integer }
+        category: { type: string }
+    Clip:
+      type: object
+      required: [id, channelId, channelName, title, gameKey, views, duration]
+      properties:
+        id: { type: string }
+        channelId: { type: string }
+        channelName: { type: string }
+        title: { type: string }
+        gameKey: { $ref: '#/components/schemas/GameKey' }
+        views: { type: integer }
+        duration: { type: string }
