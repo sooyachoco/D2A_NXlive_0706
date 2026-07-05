@@ -143,7 +143,7 @@ footer{color:var(--bc-500);font-size:12px;text-align:center;padding:26px 0 40px}
       <span class="pill">프로젝트 <b>NXlive</b></span>
       <span class="pill">디자인 <b>NX Basic 1.0v (C)</b></span>
       <span class="pill">프론트 <b>Next.js 15 · React 19</b></span>
-      <span class="pill">상태 <b>명세(create-spec) 진행 중</b></span>
+      <span class="pill">상태 <b>명세 완료 → 구현 대기</b></span>
       <span class="pill">기준일 <b>2026-07-03</b></span>
     </div>
   </div>
@@ -154,8 +154,8 @@ footer{color:var(--bc-500);font-size:12px;text-align:center;padding:26px 0 40px}
   <div class="stepper">
     <div class="step done"><div class="n">STEP 1</div><div class="t">설치</div><div class="s">✓ 완료</div><span class="badge">📦</span></div>
     <div class="step done"><div class="n">STEP 2</div><div class="t">세팅</div><div class="s">✓ 완료</div><span class="badge">⚙️</span></div>
-    <div class="step current"><div class="n">STEP 3</div><div class="t">명세</div><div class="s">▶ 진행 중</div><span class="badge">📝</span></div>
-    <div class="step todo"><div class="n">STEP 4</div><div class="t">구현</div><div class="s">대기</div><span class="badge">🛠️</span></div>
+    <div class="step done"><div class="n">STEP 3</div><div class="t">명세</div><div class="s">✓ 완료</div><span class="badge">📝</span></div>
+    <div class="step current"><div class="n">STEP 4</div><div class="t">구현</div><div class="s">▶ 다음 단계</div><span class="badge">🛠️</span></div>
     <div class="step todo"><div class="n">STEP 5</div><div class="t">점검</div><div class="s">대기</div><span class="badge">🔍</span></div>
     <div class="step todo"><div class="n">STEP 6</div><div class="t">배포</div><div class="s">대기</div><span class="badge">🚀</span></div>
   </div>
@@ -163,7 +163,7 @@ footer{color:var(--bc-500);font-size:12px;text-align:center;padding:26px 0 40px}
   <!-- stats -->
   <div class="stats">
     <div class="stat"><div class="v">9</div><div class="l">확정 결정(DECISION)</div></div>
-    <div class="stat"><div class="v">15</div><div class="l">커밋</div></div>
+    <div class="stat"><div class="v">17</div><div class="l">커밋</div></div>
     <div class="stat"><div class="v">4</div><div class="l">디자인 안 (A·B·C·N)</div></div>
     <div class="stat"><div class="v">5</div><div class="l">프로토타입 페이지</div></div>
     <div class="stat"><div class="v warn">1</div><div class="l">보류(BLOCKED)</div></div>
@@ -189,7 +189,9 @@ footer{color:var(--bc-500);font-size:12px;text-align:center;padding:26px 0 40px}
         <div class="ev skill"><div class="mk"></div><div class="top"><span class="chip skill">SKILL</span><span class="time">15:58</span></div><div class="ti">create-spec — STEP 0 게이트 통과 + spec.md 초안</div><div class="de">메인 기능=라이브 시청 확정 · MVP 5페이지 · 전부 Mock · specs/001-nxlive-live-streaming/spec.md</div><div class="sk"><span class="skt">🧩 create-spec · Step 0.5~2</span></div></div>
         <div class="ev decision"><div class="mk"></div><div class="top"><span class="chip decision">DECISION</span><span class="time">16:00</span></div><div class="ti">상태관리 = Zustand · 의존성 = 전부 자체개발(Mock)</div><div class="de">엔티티 5개(Channel/Live/Clip/ChatMessage/User) → Zustand · 외부연동 없음(후속)</div><div class="sk"><span class="skt">🧩 create-spec · Step 2.5</span></div></div>
         <div class="ev skill"><div class="mk"></div><div class="top"><span class="chip skill">SKILL</span><span class="time">16:07</span></div><div class="ti">create-spec Step 2.7 — UI 프로토타입 구현</div><div class="de">Next.js 15 + React 19 + NX Basic · 5페이지(홈/시청/채널/클립/검색) Mock · build 통과 · 5라우트 200 OK</div><div class="sk"><span class="skt">🧩 create-spec · Step 2.7</span><span class="skt tool">⚛ Next.js/React</span></div></div>
-        <div class="ev decision"><div class="mk" style="border-color:#ffbb00;background:#fff"></div><div class="top"><span class="chip" style="background:#fff2d1;color:#8a6d00">확인 대기</span><span class="time">now</span></div><div class="ti">⏸ 프로토타입 사용자 확인 대기</div><div class="de">http://localhost:3000 · A(승인 → Step 2.8) / B(피드백)</div><div class="sk"><span class="skt na">create-spec Step 2.7 승인 대기</span></div></div>
+        <div class="ev decision"><div class="mk"></div><div class="top"><span class="chip decision">승인</span><span class="time">16:20</span></div><div class="ti">✅ 프로토타입 승인 (A)</div><div class="de">5페이지 UI 승인 → Step 2.8 진입 (auth=none, storageState 불필요)</div><div class="sk"><span class="skt">🧩 create-spec · Step 2.7 승인</span></div></div>
+        <div class="ev skill"><div class="mk"></div><div class="top"><span class="chip skill">SKILL</span><span class="time">16:22</span></div><div class="ti">create-spec Step 2.8~6 — 스펙 문서 생성</div><div class="de">타입 확정 + decisions · prerequisites · plan · data-model · api-spec.yaml · tasks(8) 생성</div><div class="sk"><span class="skt">🧩 create-spec · Step 2.8~6</span></div></div>
+        <div class="ev blocked"><div class="mk"></div><div class="top"><span class="chip blocked">BLOCKED</span><span class="time">16:24</span></div><div class="ti">validate-tasks.sh 로컬 패치</div><div class="de">린트가 멀티라인 done·T{N}-review·skill 태스크 미지원 → MCP 파서와 동일하게 수정 → tasks 검증 통과(8/8)</div><div class="sk"><span class="skt na">파생 복사본만 수정 (원본 protected)</span></div></div>
       </div>
     </div>
 
@@ -197,9 +199,9 @@ footer{color:var(--bc-500);font-size:12px;text-align:center;padding:26px 0 40px}
     <div>
       <div class="next">
         <div class="k">Next Step</div>
-        <h3>프로토타입 확인 → 승인</h3>
-        <p>http://localhost:3000 에서 5페이지 확인 후, 승인(A) 시 Step 2.8(타입 확정) → decisions · plan · data-model · api-spec · tasks 생성.</p>
-        <div class="cmd">💬 A (승인) &nbsp;/&nbsp; B (피드백)</div>
+        <h3>Phase 1 자율 구현 (run-phase 1)</h3>
+        <p>tasks.md Phase 1(프론트 마감 + E2E) 자율 실행: Playwright 셋업 · 핵심 플로우 e2e · 접근성/반응형 · 팔로우 지속성 · T1-review.</p>
+        <div class="cmd">💬 run-phase 1 해줘</div>
       </div>
 
       <div class="card" style="margin-bottom:14px">
@@ -250,23 +252,20 @@ footer{color:var(--bc-500);font-size:12px;text-align:center;padding:26px 0 40px}
           <div class="skitem skip"><span class="badge">⤬</span> design-research<br>nxbasic로 생략</div>
         </div>
       </div>
-      <div class="smcol current">
-        <div class="ph">📝 명세</div><div class="st">▶ 진행 중</div>
+      <div class="smcol done">
+        <div class="ph">📝 명세</div><div class="st">✓ 완료</div>
         <div class="sklist">
-          <div class="skitem now"><span class="badge">▶</span> create-spec<br>spec✓ · Step2.5✓ · 프로토타입✓ · 승인대기</div>
-          <div class="skitem skip"><span class="badge">⤬</span> write-scenario<br>create-spec STEP0에 통합</div>
-          <div class="skitem skip"><span class="badge">⤬</span> reference-proposal<br>통합</div>
-          <div class="skitem skip"><span class="badge">⤬</span> ui-design-workflow<br>통합</div>
-          <div class="skitem plan"><span class="badge">○</span> check-decision-gates</div>
+          <div class="skitem ran"><span class="badge">✅</span> create-spec<br>spec·decisions·plan·data-model·api·tasks(8)</div>
+          <div class="skitem skip"><span class="badge">⤬</span> write-scenario · reference-proposal<br>create-spec STEP0에 통합</div>
+          <div class="skitem skip"><span class="badge">⤬</span> ui-design-workflow · check-decision-gates<br>미사용</div>
         </div>
       </div>
-      <div class="smcol todo">
-        <div class="ph">🛠️ 구현</div><div class="st">예정</div>
+      <div class="smcol current">
+        <div class="ph">🛠️ 구현</div><div class="st">▶ 다음 단계</div>
         <div class="sklist">
-          <div class="skitem plan"><span class="badge">○</span> run-phase</div>
-          <div class="skitem plan"><span class="badge">○</span> subagent-review</div>
-          <div class="skitem plan"><span class="badge">○</span> collect-prerequisites</div>
-          <div class="skitem plan"><span class="badge">○</span> add-feature</div>
+          <div class="skitem now"><span class="badge">▶</span> run-phase 1<br>Phase 1 — 프론트 마감 + E2E</div>
+          <div class="skitem plan"><span class="badge">○</span> subagent-review<br>Phase 말미 리뷰(T1-review)</div>
+          <div class="skitem skip"><span class="badge">⤬</span> collect-prerequisites<br>외부연동 없음(생략)</div>
         </div>
       </div>
       <div class="smcol todo">

@@ -13,14 +13,14 @@
 
 | 항목 | 값 |
 |---|---|
-| **현재 단계** | create-spec Step 2.7 — UI 프로토타입 **확인 대기** |
-| **상태** | ⏸️ 사용자 확인 대기 (A: 승인 / B: 피드백) |
-| **마지막 작업** | Next.js15+NX Basic 5페이지 Mock 구현 · build 통과 · 5라우트 200 OK |
-| **세션 체크포인트** | 2026-07-03 Step 2.7 프로토타입 완료 |
-| **review_status** | — |
-| **다음 행동** | 사용자 승인(A) 시 Step 2.8(타입 확정) → decisions/plan/data-model/tasks 생성 |
+| **현재 단계** | create-spec **완료** → 다음: run-phase 1 |
+| **상태** | ✅ 프로토타입 승인 · 스펙 문서 전체 생성 (tasks 검증 통과 8태스크) |
+| **마지막 작업** | Step 2.8~6: 타입 확정 + decisions/plan/data-model/api-spec/tasks |
+| **세션 체크포인트** | 2026-07-03 create-spec 완료 |
+| **review_status** | — (Phase 1 미착수) |
+| **다음 행동** | `run-phase 1 해줘` — Phase 1(프론트 마감 + E2E) 자율 실행 |
 
-**Phase 0 프로토타입**: `http://localhost:3000` · 5페이지(홈/시청/채널/클립/검색) · 전부 Mock
+**Phase 0** ☑ 완료 (프로토타입 승인) · **Phase 1** ☐ 예정(E2E·접근성·팔로우 지속성·리뷰) · **Phase 2** ⬜ 보류(백엔드 결정 후)
 
 **확정 사항 요약**
 - 프로젝트: NXlive — 넥슨 게임 라이브 스트리밍 (외부 유저, 신규)
