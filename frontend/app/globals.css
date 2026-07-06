@@ -173,9 +173,28 @@ input{font-family:inherit}
 .lrow .ri .t{font-size:15px;font-weight:700}
 .lrow .ri .m{font-size:13px;color:var(--bc-600);margin-top:4px}
 
+/* 접근성 — 키보드 포커스 가시성 (WCAG 2.4.7) */
+:focus-visible{outline:2px solid var(--pc-800);outline-offset:2px;border-radius:6px}
+.site-header a:focus-visible,.site-header button:focus-visible,
+.tag:focus-visible,.btn:focus-visible,.tabs button:focus-visible{outline:2px solid var(--pc-500);outline-offset:2px}
+.card:focus-visible{outline:2px solid var(--pc-800);outline-offset:3px}
+
 @media (max-width:1080px){
   .cards{grid-template-columns:repeat(2,1fr)}
   .home-dark .in{grid-template-columns:1fr}
   .watch{grid-template-columns:1fr}
   .chat{height:420px}
+}
+
+/* 모바일 대응 (~640px) */
+@media (max-width:640px){
+  .site-header .in{gap:12px;padding:0 16px}
+  .site-header nav{gap:12px;font-size:14px}
+  .site-header .search-chip{display:none}
+  .page{padding:20px 16px 48px}
+  .home-dark .in{padding:20px 16px 24px}
+  .cards{grid-template-columns:1fr}
+  .hero .cap .t{font-size:22px}
+  .watch .meta .title{font-size:18px}
+  .search-box{max-width:none}
 }
