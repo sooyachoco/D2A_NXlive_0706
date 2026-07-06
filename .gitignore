@@ -35,3 +35,4 @@ frontend/.next/
 frontend/test-results/
 frontend/playwright-report/
 frontend/.playwright/
+scripts/
