@@ -5,9 +5,8 @@ Thumbs.db
 # ── 보일러플레이트 소스 마커 (레거시, 폐기됨) ──
 .boilerplate-source
 
-# ── 보일러플레이트 문서·디자인 (gitignored, 실수 커밋 방지) ──
+# ── 보일러플레이트 문서 (gitignored, 실수 커밋 방지) ──
 docs/
-/design/
 PRD.md
 
 # ── 런타임 생성물 (레포 루트) ──
