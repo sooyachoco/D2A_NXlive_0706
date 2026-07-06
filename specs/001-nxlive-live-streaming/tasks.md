@@ -59,7 +59,7 @@
   - cmd: cd frontend && npm run build
   - contains: frontend/app/globals.css :: prefers-reduced-motion
 **deps**: T0-003
-**status**: ☐
+**status**: ☑
 
 ### T1-004: 팔로우 상태 지속성 (localStorage)
 **read**: specs/001-nxlive-live-streaming/data-model.md
@@ -68,7 +68,7 @@
   - cmd: cd frontend && npm run build
   - regex: frontend/lib/store.ts :: persist|localStorage
 **deps**: T0-003
-**status**: ☐
+**status**: ☑
 
 ### T1-review: 서브에이전트 코드 리뷰
 **read**: -
