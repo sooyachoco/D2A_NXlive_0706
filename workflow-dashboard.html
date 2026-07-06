@@ -163,9 +163,9 @@ footer{color:var(--bc-500);font-size:12px;text-align:center;padding:26px 0 40px}
   <!-- stats -->
   <div class="stats">
     <div class="stat"><div class="v">9</div><div class="l">확정 결정(DECISION)</div></div>
-    <div class="stat"><div class="v">23</div><div class="l">커밋</div></div>
+    <div class="stat"><div class="v">25</div><div class="l">커밋</div></div>
     <div class="stat"><div class="v">5</div><div class="l">E2E 통과</div></div>
-    <div class="stat"><div class="v">6</div><div class="l">리뷰 Required(수정)</div></div>
+    <div class="stat"><div class="v">83%</div><div class="l">UT 완료율 (S4 0)</div></div>
     <div class="stat"><div class="v warn">1</div><div class="l">보류(BLOCKED)</div></div>
   </div>
 
@@ -195,6 +195,7 @@ footer{color:var(--bc-500);font-size:12px;text-align:center;padding:26px 0 40px}
         <div class="ev skill"><div class="mk"></div><div class="top"><span class="chip skill">SKILL</span><span class="time">Phase 1</span></div><div class="ti">run-phase 1 — 프론트 마감 + E2E 자율 실행</div><div class="de">T1-004 팔로우 persist · T1-003 접근성/반응형 · T1-001·002 Playwright(5테스트 통과)</div><div class="sk"><span class="skt">🧩 run-phase · Step 2</span><span class="skt tool">🎭 Playwright</span></div></div>
         <div class="ev decision"><div class="mk"></div><div class="top"><span class="chip" style="background:var(--pc-100);color:var(--pc-900)">REVIEW</span><span class="time">T1-review</span></div><div class="ti">서브에이전트 6명 병렬 리뷰 (--full)</div><div class="de">Security·Performance·Architecture·Spec·Accessibility·Feature — Blocker 0 / Required 6 → 전부 수정(하이드레이션 ko-KR·대비·aria-pressed)</div><div class="sk"><span class="skt">🧩 subagent-review</span><span class="skt tool">🤖 Agent ×6</span></div></div>
         <div class="ev setup"><div class="mk"></div><div class="top"><span class="chip setup">PHASE</span><span class="time">완료</span></div><div class="ti">✅ Phase 1 완료</div><div class="de">E2E 5통과 · 리뷰 Blocker 0 · Gate 3 토큰 검증 통과 · Advisory는 technical-debt.md 추적</div><div class="sk"><span class="skt">🧩 run-phase · Step 3</span></div></div>
+        <div class="ev skill"><div class="mk"></div><div class="top"><span class="chip skill">SKILL</span><span class="time">점검</span></div><div class="ti">ai-usability-test — 3 페르소나 자동 UT</div><div class="de">완료율 83% · S4 0 / S3 2 / S2 2 / S1 1 · 배포블로커 없음 · 접근성 우수(aria-pressed·focus·labels 통과) · 발견: 하이드레이션 초기 인터랙션(F-001)·팔로잉 뷰 부재(F-002) → 백로그</div><div class="sk"><span class="skt">🧩 ai-usability-test</span><span class="skt tool">🎭 Playwright ×3</span></div></div>
       </div>
     </div>
 
@@ -202,9 +203,9 @@ footer{color:var(--bc-500);font-size:12px;text-align:center;padding:26px 0 40px}
     <div>
       <div class="next">
         <div class="k">Next Step</div>
-        <h3>로컬 실행 확인 → 점검(G/H)</h3>
-        <p>cd frontend &amp;&amp; npm run dev 로 5페이지를 확인한 뒤, 보안·품질 점검(Phase G) 또는 배포 준비(Phase H)를 선택. Phase 2(실 API)는 백엔드 결정 후.</p>
-        <div class="cmd">💬 테스트 완료 &nbsp;/&nbsp; G(점검) &nbsp;/&nbsp; H(배포)</div>
+        <h3>배포 전 검증 또는 P1 개선</h3>
+        <p>UT 배포블로커 없음(S4 0). 다음: pre-launch-check(배포 전 검증) · security-review(보안) · 또는 F-001(하이드레이션 로딩 게이트) 즉시 개선. Phase 2(실 API)는 백엔드 결정 후.</p>
+        <div class="cmd">💬 pre-launch-check &nbsp;/&nbsp; security-review &nbsp;/&nbsp; F-001 개선</div>
       </div>
 
       <div class="card" style="margin-bottom:14px">
@@ -273,11 +274,11 @@ footer{color:var(--bc-500);font-size:12px;text-align:center;padding:26px 0 40px}
         </div>
       </div>
       <div class="smcol current">
-        <div class="ph">🔍 점검</div><div class="st">▶ 다음 단계</div>
+        <div class="ph">🔍 점검</div><div class="st">▶ 진행 중</div>
         <div class="sklist">
-          <div class="skitem now"><span class="badge">▶</span> 로컬 실행 확인<br>npm run dev</div>
-          <div class="skitem plan"><span class="badge">○</span> pre-launch-check</div>
-          <div class="skitem plan"><span class="badge">○</span> ai-usability-test<br>(Step 2.7.5 연기분)</div>
+          <div class="skitem ran"><span class="badge">✅</span> 로컬 실행 확인<br>5라우트 200</div>
+          <div class="skitem ran"><span class="badge">✅</span> ai-usability-test<br>S4 0 · 접근성 통과</div>
+          <div class="skitem now"><span class="badge">▶</span> pre-launch-check<br>또는 F-001 개선</div>
           <div class="skitem plan"><span class="badge">○</span> security-review · design-handoff</div>
         </div>
       </div>
