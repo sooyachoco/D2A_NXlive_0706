@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>넥슨라이브 — 디자인 샘플 5종</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@400;500;600;700;800&family=Clash+Display:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap');
+
+/* ── Reset ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Noto Sans KR', sans-serif; overflow-x: hidden; background: #111; }
+
+/* ── Tab Bar ── */
+#tab-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 10000;
+  display: flex; align-items: center; justify-content: center; gap: 0;
+  height: 56px;
+  background: rgba(10,10,18,0.92); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+#tab-bar button {
+  all: unset; cursor: pointer;
+  padding: 10px 28px; font-size: 14px; font-weight: 600;
+  color: rgba(255,255,255,0.45); letter-spacing: 0.06em;
+  border-bottom: 2px solid transparent;
+  transition: color 0.25s, border-color 0.25s;
+}
+#tab-bar button:hover { color: rgba(255,255,255,0.75); }
+#tab-bar button.active { color: #fff; border-bottom-color: #fff; }
+
+/* ── Samples container ── */
+.sample { display: none; min-height: 100vh; padding-top: 56px; }
+.sample.active { display: block; }
+
+/* ════════════════════════════════════════════════
+   SAMPLE A — "Pulse" 네온 에너지 벤토
+   Font: Space Grotesk + Noto Sans KR
+   Color: #0a0e1a bg, #ff5154 primary, #ffc940 accent
+   Layout: 비대칭 벤토 그리드
+   ════════════════════════════════════════════════ */
+.s-a { background: #0a0e1a; color: #e8e6e3; }
+.s-a .inner { max-width: 1440px; margin: 0 auto; padding: 0 32px; }
+
+/* Compact nav */
+.s-a .nav-a {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 0;
+}
+.s-a .nav-a .logo {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px;
+  color: #ff5154; letter-spacing: -0.02em;
+}
+.s-a .nav-a .logo span { color: #ffc940; }
+.s-a .nav-a ul { display: flex; gap: 28px; list-style: none; }
+.s-a .nav-a ul li {
+  font-size: 13px; font-weight: 500; color: rgba(232,230,227,0.55);
+  cursor: pointer; transition: color 0.2s;
+}
+.s-a .nav-a ul li:hover { color: #ff5154; }
+.s-a .nav-a .btn-live {
+  background: #ff5154; color: #fff; border: none; border-radius: 6px;
+  padding: 8px 18px; font-size: 13px; font-weight: 600; cursor: pointer;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,81,84,0.4); }
+  50% { box-shadow: 0 0 16px 4px rgba(255,81,84,0.25); }
+}
+
+/* Bento grid entry */
+.s-a .bento {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 0.8fr;
+  grid-template-rows: 320px 200px;
+  gap: 14px;
+  margin-top: 8px;
+}
+.s-a .bento .tile {
+  border-radius: 10px; overflow: hidden; position: relative;
+  transition: transform 0.35s cubic-bezier(0.22,1,0.36,1);
+}
+.s-a .bento .tile:hover { transform: scale(1.015); }
+.s-a .bento .t1 {
+  grid-row: 1 / 3; background: linear-gradient(160deg, #1a1030 0%, #0d0f1e 100%);
+  border: 1px solid rgba(255,81,84,0.15);
+  display: flex; flex-direction: column; justify-content: flex-end; padding: 28px;
+}
+.s-a .bento .t1 .live-badge {
+  position: absolute; top: 20px; left: 20px;
+  background: #ff5154; color: #fff; font-size: 11px; font-weight: 700;
+  padding: 4px 12px; border-radius: 4px; letter-spacing: 0.08em;
+  display: flex; align-items: center; gap: 6px;
+}
+.s-a .bento .t1 .live-badge::before {
+  content: ''; width: 6px; height: 6px; background: #fff; border-radius: 50%;
+  animation: blink 1.2s infinite;
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+.s-a .bento .t1 .stream-title {
+  font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700;
+  line-height: 1.25; margin-bottom: 8px;
+}
+.s-a .bento .t1 .streamer {
+  font-size: 13px; color: rgba(232,230,227,0.6);
+}
+.s-a .bento .t1 .viewer-count {
+  position: absolute; bottom: 28px; right: 28px;
+  font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 700;
+  color: #ffc940;
+}
+.s-a .bento .t1 .viewer-count small { font-size: 12px; color: rgba(232,230,227,0.5); display: block; font-weight: 400; }
+
+/* Placeholder for live stream visual */
+.s-a .bento .t1::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 60% 30%, rgba(255,81,84,0.12) 0%, transparent 70%),
+              radial-gradient(ellipse at 20% 80%, rgba(255,201,64,0.08) 0%, transparent 60%);
+}
+
+.s-a .bento .t2 {
+  background: linear-gradient(145deg, #12162a 0%, #0e1020 100%);
+  border: 1px solid rgba(255,201,64,0.12);
+  padding: 24px; display: flex; flex-direction: column; justify-content: space-between;
+}
+.s-a .bento .t2 h3 {
+  font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600;
+  color: #ffc940; letter-spacing: 0.06em; text-transform: uppercase;
+}
+.s-a .bento .t2 .game-list { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+.s-a .bento .t2 .game-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 14px; border-radius: 8px;
+  background: rgba(255,255,255,0.03); transition: background 0.2s;
+}
+.s-a .bento .t2 .game-item:hover { background: rgba(255,81,84,0.08); }
+.s-a .bento .t2 .game-icon {
+  width: 36px; height: 36px; border-radius: 6px;
+  background: rgba(255,81,84,0.15); display: flex; align-items: center; justify-content: center;
+}
+.s-a .bento .t2 .game-name { font-size: 13px; font-weight: 500; }
+.s-a .bento .t2 .game-viewers { font-size: 11px; color: rgba(232,230,227,0.4); }
+
+.s-a .bento .t3 {
+  background: #ff5154; border-radius: 10px;
+  padding: 24px; display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center;
+}
+.s-a .bento .t3 .stat-number {
+  font-family: 'Space Grotesk', sans-serif; font-size: 48px; font-weight: 700;
+  color: #fff; line-height: 1;
+}
+.s-a .bento .t3 .stat-label { font-size: 13px; color: rgba(255,255,255,0.75); margin-top: 6px; }
+
+.s-a .bento .t4 {
+  grid-column: 2 / 4;
+  background: linear-gradient(135deg, #14182e 0%, #0e1020 100%);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 24px; display: flex; align-items: center; gap: 20px;
+}
+.s-a .bento .t4 .chat-preview {
+  flex: 1; display: flex; flex-direction: column; gap: 8px;
+}
+.s-a .bento .t4 .chat-msg {
+  display: flex; gap: 8px; align-items: flex-start;
+  font-size: 13px; line-height: 1.45;
+}
+.s-a .bento .t4 .chat-msg .nick { color: #ffc940; font-weight: 600; white-space: nowrap; }
+.s-a .bento .t4 .chat-msg .txt { color: rgba(232,230,227,0.7); }
+.s-a .bento .t4 .chat-input-area {
+  flex: 0 0 220px; display: flex; flex-direction: column; gap: 10px;
+}
+.s-a .bento .t4 .chat-input-area h4 {
+  font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600;
+  color: rgba(232,230,227,0.5); text-transform: uppercase; letter-spacing: 0.08em;
+}
+.s-a .bento .t4 .chat-input {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px; padding: 12px 14px; color: #e8e6e3; font-size: 13px;
+}
+
+/* Section 2: 카테고리 */
+.s-a .section-cat { margin-top: 48px; padding-bottom: 60px; }
+.s-a .section-cat h2 {
+  font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700;
+  margin-bottom: 24px;
+}
+.s-a .cat-scroll {
+  display: flex; gap: 16px; overflow-x: auto; padding-bottom: 16px;
+  scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.1) transparent;
+}
+.s-a .cat-card {
+  flex: 0 0 200px; height: 260px;
+  border-radius: 10px; overflow: hidden; position: relative;
+  cursor: pointer; transition: transform 0.3s;
+}
+.s-a .cat-card:hover { transform: translateY(-6px); }
+.s-a .cat-card .cat-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(10,14,26,0.92) 100%);
+}
+.s-a .cat-card .cat-info {
+  position: absolute; bottom: 16px; left: 16px; right: 16px;
+}
+.s-a .cat-card .cat-info .cat-name {
+  font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600;
+}
+.s-a .cat-card .cat-info .cat-count { font-size: 11px; color: rgba(232,230,227,0.45); margin-top: 4px; }
+/* Category colors */
+.s-a .cat-card:nth-child(1) { background: linear-gradient(160deg, #2a1540, #0e0818); }
+.s-a .cat-card:nth-child(2) { background: linear-gradient(160deg, #1a2840, #0a1020); }
+.s-a .cat-card:nth-child(3) { background: linear-gradient(160deg, #2e1a12, #140c08); }
+.s-a .cat-card:nth-child(4) { background: linear-gradient(160deg, #0d2a28, #081418); }
+.s-a .cat-card:nth-child(5) { background: linear-gradient(160deg, #281a2e, #140e18); }
+.s-a .cat-card:nth-child(6) { background: linear-gradient(160deg, #1e2a14, #0c1408); }
+
+
+/* ════════════════════════════════════════════════
+   SAMPLE B — "Signal" 레이어드 브로드캐스트
+   Font: Syne + Noto Sans KR
+   Color: #141820 bg, #00d9a6 primary, #c4ff36 accent
+   Layout: 레이어드 캔버스
+   ════════════════════════════════════════════════ */
+.s-b { background: #141820; color: #e4e2df; }
+.s-b .inner { max-width: 1440px; margin: 0 auto; padding: 0 32px; }
+
+.s-b .nav-b {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 0;
+}
+.s-b .nav-b .logo {
+  font-family: 'Syne', sans-serif; font-weight: 800; font-size: 24px;
+  color: #00d9a6; letter-spacing: -0.03em;
+}
+.s-b .nav-b ul { display: flex; gap: 32px; list-style: none; }
+.s-b .nav-b ul li {
+  font-size: 13px; font-weight: 500; color: rgba(228,226,223,0.45);
+  cursor: pointer; transition: color 0.2s;
+}
+.s-b .nav-b ul li:hover { color: #00d9a6; }
+.s-b .nav-b .btn-start {
+  background: transparent; color: #c4ff36; border: 1.5px solid #c4ff36;
+  border-radius: 6px; padding: 8px 20px; font-size: 13px; font-weight: 600;
+  cursor: pointer; transition: all 0.25s;
+}
+.s-b .nav-b .btn-start:hover { background: #c4ff36; color: #141820; }
+
+/* Layered canvas entry */
+.s-b .canvas-entry {
+  position: relative; height: 520px; margin-top: 8px;
+  border-radius: 14px; overflow: hidden;
+}
+/* Background layer */
+.s-b .canvas-entry .layer-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 70% 40%, rgba(0,217,166,0.1) 0%, transparent 50%),
+              radial-gradient(ellipse at 20% 70%, rgba(196,255,54,0.06) 0%, transparent 50%),
+              linear-gradient(180deg, #1a2030 0%, #0e1218 100%);
+}
+/* Grid overlay */
+.s-b .canvas-entry .layer-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(0,217,166,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,217,166,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+/* Mid layer — broadcast info */
+.s-b .canvas-entry .layer-mid {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 40px; z-index: 2;
+  background: linear-gradient(180deg, transparent 0%, rgba(20,24,32,0.95) 100%);
+}
+.s-b .canvas-entry .broadcast-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #00d9a6; color: #0a0e14; font-size: 11px; font-weight: 700;
+  padding: 5px 14px; border-radius: 4px; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.s-b .canvas-entry .broadcast-tag::before {
+  content: ''; width: 6px; height: 6px; background: #0a0e14; border-radius: 50%;
+  animation: blink 1.2s infinite;
+}
+.s-b .canvas-entry .broadcast-title {
+  font-family: 'Syne', sans-serif; font-size: 38px; font-weight: 800;
+  line-height: 1.15; margin-top: 14px; max-width: 600px;
+  background: linear-gradient(90deg, #e4e2df 0%, #c4ff36 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.s-b .canvas-entry .broadcast-meta {
+  display: flex; align-items: center; gap: 24px; margin-top: 14px;
+  font-size: 13px; color: rgba(228,226,223,0.55);
+}
+.s-b .canvas-entry .broadcast-meta .viewers {
+  color: #c4ff36; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px;
+}
+/* Front layer — floating widgets */
+.s-b .canvas-entry .layer-front {
+  position: absolute; top: 30px; right: 40px; z-index: 3;
+  display: flex; flex-direction: column; gap: 12px; align-items: flex-end;
+}
+.s-b .widget-card {
+  background: rgba(20,24,32,0.85); backdrop-filter: blur(8px);
+  border: 1px solid rgba(0,217,166,0.15); border-radius: 10px;
+  padding: 16px 20px; min-width: 200px;
+}
+.s-b .widget-card h4 {
+  font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 600;
+  color: #00d9a6; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px;
+}
+.s-b .widget-card .w-row {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 13px; padding: 5px 0;
+}
+.s-b .widget-card .w-row .w-val {
+  font-family: 'Syne', sans-serif; font-weight: 700;
+}
+
+/* Section 2: Channel grid */
+.s-b .section-channels { margin-top: 48px; padding-bottom: 60px; }
+.s-b .section-channels .section-header {
+  display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 28px;
+}
+.s-b .section-channels .section-header h2 {
+  font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 700;
+}
+.s-b .section-channels .section-header .link {
+  font-size: 13px; color: #00d9a6; cursor: pointer;
+}
+.s-b .ch-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+}
+.s-b .ch-card {
+  border-radius: 10px; overflow: hidden; cursor: pointer;
+  background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
+  transition: border-color 0.3s, transform 0.3s;
+}
+.s-b .ch-card:hover { border-color: rgba(0,217,166,0.3); transform: translateY(-4px); }
+.s-b .ch-thumb {
+  height: 160px; position: relative;
+  background: linear-gradient(135deg, #1e2840, #141820);
+}
+.s-b .ch-thumb .ch-live-dot {
+  position: absolute; top: 10px; left: 10px;
+  width: 8px; height: 8px; background: #00d9a6; border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0,217,166,0.5);
+}
+.s-b .ch-thumb .ch-viewers {
+  position: absolute; bottom: 8px; right: 10px;
+  background: rgba(0,0,0,0.65); color: #c4ff36; font-size: 11px; font-weight: 600;
+  padding: 3px 8px; border-radius: 4px;
+}
+.s-b .ch-info { padding: 14px 16px; }
+.s-b .ch-info .ch-name { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.s-b .ch-info .ch-game { font-size: 12px; color: rgba(228,226,223,0.4); }
+
+/* Unique channel thumb backgrounds */
+.s-b .ch-card:nth-child(1) .ch-thumb { background: linear-gradient(135deg, #1a1030, #0e0818); }
+.s-b .ch-card:nth-child(2) .ch-thumb { background: linear-gradient(135deg, #0d2a28, #081418); }
+.s-b .ch-card:nth-child(3) .ch-thumb { background: linear-gradient(135deg, #2e1a12, #1a0e08); }
+.s-b .ch-card:nth-child(4) .ch-thumb { background: linear-gradient(135deg, #1a2030, #0e1218); }
+
+
+/* ════════════════════════════════════════════════
+   SAMPLE C — "Flow" 매거진 스트림 피드
+   Font: Clash Display (fallback: system-ui) + Noto Sans KR
+   Color: #f7f4ef bg, #d4380d primary, #2d3a5c secondary
+   Layout: 매거진/에디토리얼
+   ════════════════════════════════════════════════ */
+.s-c { background: #f7f4ef; color: #1a1a1a; }
+.s-c .inner { max-width: 1440px; margin: 0 auto; padding: 0 32px; }
+
+.s-c .nav-c {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 0; border-bottom: 1.5px solid rgba(45,58,92,0.1);
+}
+.s-c .nav-c .logo {
+  font-family: 'Syne', sans-serif; font-weight: 800; font-size: 22px;
+  color: #d4380d; letter-spacing: -0.03em;
+}
+.s-c .nav-c ul { display: flex; gap: 28px; list-style: none; }
+.s-c .nav-c ul li {
+  font-size: 13px; font-weight: 500; color: rgba(26,26,26,0.45);
+  cursor: pointer; transition: color 0.2s;
+}
+.s-c .nav-c ul li:hover { color: #d4380d; }
+.s-c .nav-c .btn-join {
+  background: #d4380d; color: #fff; border: none; border-radius: 6px;
+  padding: 8px 18px; font-size: 13px; font-weight: 600; cursor: pointer;
+  transition: background 0.2s;
+}
+.s-c .nav-c .btn-join:hover { background: #b82e0a; }
+
+/* Magazine entry — collage layout */
+.s-c .mag-entry {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 20px;
+  margin-top: 28px;
+}
+.s-c .mag-feature {
+  grid-row: 1 / 3;
+  background: #2d3a5c; border-radius: 12px; overflow: hidden;
+  position: relative; min-height: 460px; cursor: pointer;
+  transition: transform 0.35s;
+}
+.s-c .mag-feature:hover { transform: scale(1.01); }
+.s-c .mag-feature::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 60%, rgba(212,56,13,0.15) 0%, transparent 60%);
+}
+.s-c .mag-feature .mag-label {
+  position: absolute; top: 20px; left: 20px;
+  background: #d4380d; color: #fff; font-size: 11px; font-weight: 700;
+  padding: 5px 14px; border-radius: 4px; letter-spacing: 0.06em;
+}
+.s-c .mag-feature .mag-f-content {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 32px;
+  background: linear-gradient(180deg, transparent 0%, rgba(45,58,92,0.95) 100%);
+}
+.s-c .mag-feature .mag-f-title {
+  font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800;
+  color: #f7f4ef; line-height: 1.2; margin-bottom: 8px;
+}
+.s-c .mag-feature .mag-f-desc {
+  font-size: 14px; color: rgba(247,244,239,0.65); line-height: 1.6; max-width: 400px;
+}
+
+.s-c .mag-side-top {
+  background: #fff; border-radius: 12px; border: 1px solid rgba(45,58,92,0.08);
+  padding: 28px; display: flex; flex-direction: column; justify-content: space-between;
+  transition: border-color 0.3s;
+}
+.s-c .mag-side-top:hover { border-color: #d4380d; }
+.s-c .mag-side-top .tag {
+  font-size: 11px; font-weight: 600; color: #d4380d;
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+.s-c .mag-side-top h3 {
+  font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700;
+  margin-top: 12px; line-height: 1.3;
+}
+.s-c .mag-side-top .stat-row {
+  display: flex; gap: 24px; margin-top: 16px;
+}
+.s-c .mag-side-top .stat-item .stat-val {
+  font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 700; color: #2d3a5c;
+}
+.s-c .mag-side-top .stat-item .stat-lbl { font-size: 11px; color: rgba(26,26,26,0.4); margin-top: 2px; }
+
+.s-c .mag-side-bottom {
+  background: linear-gradient(135deg, #f0ebe3 0%, #e8e2d8 100%);
+  border-radius: 12px; padding: 24px;
+  display: flex; align-items: center; gap: 20px;
+  cursor: pointer; transition: transform 0.3s;
+}
+.s-c .mag-side-bottom:hover { transform: translateX(4px); }
+.s-c .mag-side-bottom .schedule-icon {
+  width: 56px; height: 56px; border-radius: 12px;
+  background: #d4380d; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.s-c .mag-side-bottom .schedule-info h4 {
+  font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700;
+}
+.s-c .mag-side-bottom .schedule-info p {
+  font-size: 13px; color: rgba(26,26,26,0.5); margin-top: 4px;
+}
+
+/* Section 2: 스트리머 리스트 */
+.s-c .section-streamers { margin-top: 48px; padding-bottom: 60px; }
+.s-c .section-streamers .section-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 24px;
+  border-bottom: 1.5px solid rgba(45,58,92,0.08); padding-bottom: 16px;
+}
+.s-c .section-streamers .section-header h2 {
+  font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 700;
+}
+.s-c .section-streamers .section-header .filter-pills {
+  display: flex; gap: 8px;
+}
+.s-c .section-streamers .section-header .filter-pills button {
+  all: unset; cursor: pointer;
+  padding: 6px 16px; font-size: 12px; font-weight: 500;
+  border-radius: 6px; color: rgba(26,26,26,0.5);
+  border: 1px solid rgba(45,58,92,0.1); transition: all 0.2s;
+}
+.s-c .section-streamers .section-header .filter-pills button.active {
+  background: #2d3a5c; color: #f7f4ef; border-color: #2d3a5c;
+}
+.s-c .streamer-list { display: flex; flex-direction: column; gap: 12px; }
+.s-c .streamer-row {
+  display: grid; grid-template-columns: 40px 1.2fr 1fr 100px 80px;
+  align-items: center; gap: 16px;
+  padding: 16px 20px; border-radius: 10px;
+  background: #fff; border: 1px solid rgba(45,58,92,0.06);
+  transition: border-color 0.2s, box-shadow 0.2s; cursor: pointer;
+}
+.s-c .streamer-row:hover {
+  border-color: rgba(212,56,13,0.2);
+  box-shadow: 0 2px 12px rgba(212,56,13,0.06);
+}
+.s-c .streamer-row .rank {
+  font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700;
+  color: rgba(26,26,26,0.2); text-align: center;
+}
+.s-c .streamer-row .s-name { font-size: 14px; font-weight: 600; }
+.s-c .streamer-row .s-game { font-size: 12px; color: rgba(26,26,26,0.45); margin-top: 2px; }
+.s-c .streamer-row .s-title { font-size: 13px; color: rgba(26,26,26,0.55); }
+.s-c .streamer-row .s-viewers {
+  font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; color: #d4380d;
+  text-align: right;
+}
+.s-c .streamer-row .s-status {
+  text-align: center;
+}
+.s-c .streamer-row .s-status .dot-live {
+  display: inline-block; width: 8px; height: 8px; background: #d4380d; border-radius: 50%;
+  box-shadow: 0 0 6px rgba(212,56,13,0.4);
+}
+
+/* ── Inline SVG icons ── */
+.icon-controller, .icon-broadcast, .icon-chat, .icon-trophy, .icon-play, .icon-calendar {
+  display: inline-flex; align-items: center; justify-content: center;
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ════════════════════════════════════════════════
+   SAMPLE N — "NX Desk" 사이드바 + 콘텐츠 대시보드
+   NX Basic 1.0v tokens
+   Layout: 사이드바 + 콘텐츠
+   ════════════════════════════════════════════════ */
+.s-n {
+  --nx-pc-600: #57A0FF; --nx-pc-700: #3D91FF; --nx-pc-800: #0A74FF;
+  --nx-pc-900: #0056C7; --nx-pc-1000: #1E4B85;
+  --nx-bc-100: #E8EBF2; --nx-bc-200: #D2D6E0; --nx-bc-300: #C6CCD7;
+  --nx-bc-500: #A1A7B5; --nx-bc-700: #747A86; --nx-bc-800: #51555D;
+  --nx-bc-900: #3D4148; --nx-bc-1000: #17191C;
+  --nx-surface: #FCFCFD; --nx-surface-muted: #F9FAFB;
+  --nx-danger: #EF5D5D; --nx-success: #59E387; --nx-warning: #FFBB00;
+  background: var(--nx-surface-muted); color: var(--nx-bc-1000);
+  font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif;
+}
+.s-n .desk-layout {
+  display: grid; grid-template-columns: 240px 1fr;
+  max-width: 1440px; margin: 0 auto; min-height: calc(100vh - 56px);
+}
+.s-n .sidebar {
+  background: var(--nx-surface); border-right: 1px solid var(--nx-bc-300);
+  padding: 24px 0; display: flex; flex-direction: column; gap: 4px;
+  position: sticky; top: 56px; height: calc(100vh - 56px); overflow-y: auto;
+}
+.s-n .sidebar .logo-n {
+  padding: 0 20px 20px; font-size: 20px; font-weight: 700;
+  color: var(--nx-pc-600); letter-spacing: -0.03em;
+  border-bottom: 1px solid var(--nx-bc-100);
+  margin-bottom: 12px;
+}
+.s-n .sidebar .logo-n em { font-style: normal; color: var(--nx-bc-1000); }
+.s-n .sidebar .nav-section {
+  padding: 0 12px; margin-bottom: 8px;
+}
+.s-n .sidebar .nav-section .section-label {
+  font-size: 11px; font-weight: 600; color: var(--nx-bc-500);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 8px 8px 6px; margin-bottom: 2px;
+}
+.s-n .sidebar .nav-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 12px; border-radius: 8px; font-size: 14px;
+  color: var(--nx-bc-800); cursor: pointer; transition: all 0.15s;
+}
+.s-n .sidebar .nav-item:hover { background: var(--nx-bc-100); color: var(--nx-bc-1000); }
+.s-n .sidebar .nav-item.active {
+  background: #EBF3FF; color: var(--nx-pc-800); font-weight: 600;
+}
+.s-n .sidebar .nav-item .icon-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+}
+.s-n .sidebar .nav-item .badge-count {
+  margin-left: auto; background: var(--nx-danger); color: #fff;
+  font-size: 11px; font-weight: 700; padding: 1px 7px; border-radius: 10px;
+}
+.s-n .sidebar .nav-item .badge-live {
+  margin-left: auto; background: var(--nx-danger); color: #fff;
+  font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px;
+  animation: nx-blink 2s ease-in-out infinite;
+}
+@keyframes nx-blink {
+  0%, 100% { opacity: 1; } 50% { opacity: 0.5; }
+}
+
+.s-n .main-content { padding: 28px 32px; }
+.s-n .main-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 24px;
+}
+.s-n .main-header h1 {
+  font-size: 22px; font-weight: 700; color: var(--nx-bc-1000);
+  letter-spacing: -0.02em;
+}
+.s-n .main-header .search-box {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--nx-surface); border: 1px solid var(--nx-bc-300);
+  border-radius: 8px; padding: 8px 14px; width: 280px;
+}
+.s-n .main-header .search-box span { color: var(--nx-bc-500); font-size: 14px; }
+.s-n .main-header .search-box input {
+  border: none; outline: none; background: transparent;
+  font-size: 14px; color: var(--nx-bc-1000); width: 100%;
+  font-family: inherit;
+}
+.s-n .main-header .search-box input::placeholder { color: var(--nx-bc-500); }
+
+.s-n .featured-stream {
+  position: relative; border-radius: 14px; overflow: hidden;
+  background: var(--nx-bc-900); height: 340px; margin-bottom: 28px;
+}
+.s-n .featured-stream .fs-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(23,25,28,0.85) 0%, transparent 50%);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 28px;
+}
+.s-n .featured-stream .fs-live-badge {
+  position: absolute; top: 16px; left: 16px;
+  background: var(--nx-danger); color: #fff; font-size: 12px; font-weight: 700;
+  padding: 4px 10px; border-radius: 4px;
+  display: flex; align-items: center; gap: 6px;
+}
+.s-n .featured-stream .fs-live-badge::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%; background: #fff;
+  animation: nx-blink 1.5s ease-in-out infinite;
+}
+.s-n .featured-stream .fs-viewers {
+  position: absolute; top: 16px; right: 16px;
+  background: rgba(0,0,0,0.6); color: #fff; font-size: 12px; font-weight: 600;
+  padding: 4px 10px; border-radius: 4px;
+}
+.s-n .featured-stream .fs-title {
+  font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 6px;
+}
+.s-n .featured-stream .fs-meta {
+  display: flex; gap: 12px; font-size: 13px; color: rgba(255,255,255,0.7);
+}
+.s-n .featured-stream .fs-meta .tag {
+  background: var(--nx-pc-600); color: #fff; padding: 2px 8px; border-radius: 4px;
+  font-size: 11px; font-weight: 600;
+}
+
+.s-n .section-title {
+  font-size: 16px; font-weight: 700; color: var(--nx-bc-1000);
+  margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
+}
+.s-n .section-title .more {
+  margin-left: auto; font-size: 13px; font-weight: 500;
+  color: var(--nx-pc-600); cursor: pointer;
+}
+
+.s-n .stream-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  margin-bottom: 32px;
+}
+.s-n .stream-card {
+  background: var(--nx-surface); border-radius: 10px;
+  border: 1px solid var(--nx-bc-100); overflow: hidden;
+  transition: box-shadow 0.2s, transform 0.2s; cursor: pointer;
+}
+.s-n .stream-card:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06); transform: translateY(-2px);
+}
+.s-n .stream-card .card-thumb {
+  height: 150px; background: var(--nx-bc-200); position: relative;
+}
+.s-n .stream-card .card-thumb .thumb-live {
+  position: absolute; top: 8px; left: 8px;
+  background: var(--nx-danger); color: #fff; font-size: 10px; font-weight: 700;
+  padding: 2px 6px; border-radius: 3px;
+}
+.s-n .stream-card .card-thumb .thumb-viewers {
+  position: absolute; bottom: 8px; right: 8px;
+  background: rgba(0,0,0,0.6); color: #fff; font-size: 11px;
+  padding: 2px 8px; border-radius: 3px;
+}
+.s-n .stream-card .card-info { padding: 12px 14px; }
+.s-n .stream-card .card-info .ci-title {
+  font-size: 14px; font-weight: 600; color: var(--nx-bc-1000);
+  margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.s-n .stream-card .card-info .ci-streamer {
+  font-size: 13px; color: var(--nx-bc-700); margin-bottom: 6px;
+}
+.s-n .stream-card .card-info .ci-tags { display: flex; gap: 6px; }
+.s-n .stream-card .card-info .ci-tags span {
+  font-size: 11px; color: var(--nx-bc-700); background: var(--nx-bc-100);
+  padding: 2px 8px; border-radius: 4px;
+}
+
+.s-n .streamer-strip {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px;
+  margin-bottom: 32px;
+}
+.s-n .streamer-item {
+  background: var(--nx-surface); border: 1px solid var(--nx-bc-100);
+  border-radius: 12px; padding: 18px 16px; text-align: center;
+  cursor: pointer; transition: box-shadow 0.2s, transform 0.2s;
+}
+.s-n .streamer-item:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06); transform: translateY(-2px);
+}
+.s-n .streamer-item .si-avatar {
+  width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 10px;
+  position: relative;
+}
+.s-n .streamer-item .si-avatar .avatar-circle {
+  width: 56px; height: 56px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; font-weight: 700; color: #fff;
+}
+.s-n .streamer-item .si-avatar .live-ring {
+  position: absolute; inset: -3px; border-radius: 50%;
+  border: 2px solid var(--nx-danger);
+  animation: nx-blink 2s ease-in-out infinite;
+}
+.s-n .streamer-item .si-name {
+  font-size: 13px; font-weight: 600; color: var(--nx-bc-1000); margin-bottom: 2px;
+}
+.s-n .streamer-item .si-game {
+  font-size: 11px; color: var(--nx-bc-700); margin-bottom: 6px;
+}
+.s-n .streamer-item .si-viewers {
+  font-size: 11px; font-weight: 600; color: var(--nx-danger);
+}
+
+.s-n .program-table {
+  background: var(--nx-surface); border: 1px solid var(--nx-bc-100);
+  border-radius: 12px; overflow: hidden;
+}
+.s-n .program-table .pt-header {
+  display: grid; grid-template-columns: 100px 1fr 140px 120px 80px;
+  padding: 12px 20px; background: var(--nx-surface-muted);
+  border-bottom: 1px solid var(--nx-bc-100);
+  font-size: 12px; font-weight: 600; color: var(--nx-bc-700);
+  text-transform: uppercase; letter-spacing: 0.04em;
+}
+.s-n .program-table .pt-row {
+  display: grid; grid-template-columns: 100px 1fr 140px 120px 80px;
+  padding: 14px 20px; align-items: center;
+  border-bottom: 1px solid var(--nx-bc-100);
+  transition: background 0.15s; cursor: pointer;
+}
+.s-n .program-table .pt-row:last-child { border-bottom: none; }
+.s-n .program-table .pt-row:hover { background: var(--nx-surface-muted); }
+.s-n .program-table .pt-row.now { background: #EBF3FF; }
+.s-n .pt-time { font-size: 13px; font-weight: 600; color: var(--nx-bc-800); }
+.s-n .pt-row.now .pt-time { color: var(--nx-pc-800); }
+.s-n .pt-title { font-size: 14px; font-weight: 600; color: var(--nx-bc-1000); }
+.s-n .pt-channel { font-size: 13px; color: var(--nx-bc-700); }
+.s-n .pt-category {
+  font-size: 12px; color: var(--nx-bc-700); background: var(--nx-bc-100);
+  padding: 3px 10px; border-radius: 4px; display: inline-block; width: fit-content;
+}
+.s-n .pt-status { font-size: 12px; font-weight: 600; text-align: center; }
+.s-n .pt-status .on-air {
+  color: #fff; background: var(--nx-danger); padding: 3px 8px;
+  border-radius: 4px; font-size: 11px;
+}
+.s-n .pt-status .upcoming {
+  color: var(--nx-bc-700); background: var(--nx-bc-100); padding: 3px 8px;
+  border-radius: 4px; font-size: 11px;
+}
+
+/* ════════════════════════════════════════════════
+   SAMPLE D — "NX Grid" 브로큰 그리드 + 타이포 블록
+   NX Basic 1.0v tokens
+   Layout: 브로큰 그리드 진입
+   ════════════════════════════════════════════════ */
+.s-d {
+  --nx-pc-600: #57A0FF; --nx-pc-700: #3D91FF; --nx-pc-800: #0A74FF;
+  --nx-pc-900: #0056C7; --nx-pc-1000: #1E4B85;
+  --nx-bc-100: #E8EBF2; --nx-bc-200: #D2D6E0; --nx-bc-300: #C6CCD7;
+  --nx-bc-500: #A1A7B5; --nx-bc-700: #747A86; --nx-bc-800: #51555D;
+  --nx-bc-900: #3D4148; --nx-bc-1000: #17191C;
+  --nx-surface: #FCFCFD; --nx-surface-muted: #F9FAFB;
+  --nx-danger: #EF5D5D; --nx-success: #59E387; --nx-warning: #FFBB00;
+  background: var(--nx-bc-1000); color: var(--nx-surface);
+  font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif;
+}
+.s-d .inner-d { max-width: 1440px; margin: 0 auto; padding: 0 32px; }
+
+.s-d .nav-d {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.s-d .nav-d .logo-d {
+  font-size: 20px; font-weight: 700; color: var(--nx-pc-600);
+  letter-spacing: -0.03em;
+}
+.s-d .nav-d .logo-d em { font-style: normal; color: #fff; }
+.s-d .nav-d ul { display: flex; gap: 28px; list-style: none; }
+.s-d .nav-d ul li {
+  font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.5);
+  cursor: pointer; transition: color 0.2s;
+}
+.s-d .nav-d ul li:hover { color: var(--nx-pc-600); }
+.s-d .nav-d .btn-go-live {
+  background: var(--nx-pc-600); color: #fff; border: none; border-radius: 8px;
+  padding: 9px 20px; font-size: 13px; font-weight: 600; cursor: pointer;
+  transition: background 0.2s;
+}
+.s-d .nav-d .btn-go-live:hover { background: var(--nx-pc-700); }
+
+.s-d .broken-entry {
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.6fr;
+  grid-template-rows: 180px 260px;
+  gap: 12px;
+  margin-top: 28px;
+}
+.s-d .be-hero {
+  grid-column: 1 / 3; grid-row: 1 / 3;
+  background: var(--nx-bc-900); border-radius: 16px;
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 32px;
+}
+.s-d .be-hero .hero-badge {
+  position: absolute; top: 20px; left: 20px;
+  background: var(--nx-danger); color: #fff;
+  font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 4px;
+  display: flex; align-items: center; gap: 6px;
+}
+.s-d .be-hero .hero-badge::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%; background: #fff;
+  animation: nx-blink 1.5s ease-in-out infinite;
+}
+.s-d .be-hero .hero-viewers {
+  position: absolute; top: 20px; right: 20px;
+  background: rgba(0,0,0,0.5); color: #fff; font-size: 12px;
+  padding: 4px 10px; border-radius: 4px;
+}
+.s-d .be-hero .hero-text h2 {
+  font-size: 42px; font-weight: 800; line-height: 1.1;
+  letter-spacing: -0.03em; margin-bottom: 10px;
+}
+.s-d .be-hero .hero-text h2 span { color: var(--nx-pc-600); }
+.s-d .be-hero .hero-text p {
+  font-size: 14px; color: rgba(255,255,255,0.6); max-width: 400px;
+}
+
+.s-d .be-stat {
+  background: var(--nx-pc-1000); border-radius: 16px;
+  padding: 22px; display: flex; flex-direction: column;
+  justify-content: center; align-items: center; text-align: center;
+}
+.s-d .be-stat .stat-num {
+  font-size: 40px; font-weight: 800; color: var(--nx-pc-600);
+  letter-spacing: -0.02em; line-height: 1;
+}
+.s-d .be-stat .stat-label {
+  font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 6px;
+  text-transform: uppercase; letter-spacing: 0.1em;
+}
+
+.s-d .be-ticker {
+  background: var(--nx-bc-900); border-radius: 16px; padding: 18px;
+  display: flex; flex-direction: column; gap: 10px; overflow: hidden;
+}
+.s-d .be-ticker .ticker-title {
+  font-size: 12px; font-weight: 600; color: var(--nx-pc-600);
+  text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px;
+}
+.s-d .be-ticker .ticker-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.s-d .be-ticker .ticker-item:last-child { border-bottom: none; }
+.s-d .be-ticker .tk-rank {
+  font-size: 14px; font-weight: 700; color: var(--nx-pc-600);
+  width: 24px; text-align: center;
+}
+.s-d .be-ticker .tk-info { flex: 1; }
+.s-d .be-ticker .tk-name { font-size: 13px; font-weight: 600; color: #fff; }
+.s-d .be-ticker .tk-game { font-size: 11px; color: rgba(255,255,255,0.5); }
+.s-d .be-ticker .tk-viewers {
+  font-size: 12px; color: var(--nx-success); font-weight: 600;
+}
+
+.s-d .category-section { margin-top: 36px; }
+.s-d .cat-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 18px;
+}
+.s-d .cat-header h3 {
+  font-size: 20px; font-weight: 700; letter-spacing: -0.02em;
+}
+.s-d .cat-header .cat-more {
+  font-size: 13px; color: var(--nx-pc-600); cursor: pointer;
+}
+
+.s-d .cat-broken-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 200px 160px;
+  gap: 12px;
+}
+.s-d .cat-card {
+  background: var(--nx-bc-900); border-radius: 12px;
+  padding: 20px; display: flex; flex-direction: column;
+  justify-content: flex-end; position: relative; overflow: hidden;
+  cursor: pointer; transition: transform 0.2s;
+}
+.s-d .cat-card:hover { transform: scale(1.02); }
+.s-d .cat-card.wide { grid-column: span 2; }
+.s-d .cat-card.tall { grid-row: span 2; }
+.s-d .cat-card .cc-game {
+  font-size: 18px; font-weight: 700; margin-bottom: 4px;
+}
+.s-d .cat-card .cc-count {
+  font-size: 12px; color: rgba(255,255,255,0.5);
+}
+.s-d .cat-card .cc-live-dot {
+  position: absolute; top: 14px; right: 14px;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--nx-success);
+  box-shadow: 0 0 8px rgba(89,227,135,0.4);
+}
+
+.s-d .upcoming-bar {
+  margin-top: 32px; padding: 24px;
+  background: linear-gradient(135deg, var(--nx-pc-1000), var(--nx-bc-900));
+  border-radius: 14px;
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;
+}
+.s-d .up-item { padding: 16px; }
+.s-d .up-item .up-time {
+  font-size: 11px; font-weight: 600; color: var(--nx-pc-600);
+  text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;
+}
+.s-d .up-item .up-title {
+  font-size: 16px; font-weight: 700; margin-bottom: 4px;
+}
+.s-d .up-item .up-desc {
+  font-size: 13px; color: rgba(255,255,255,0.5);
+}
+
+/* ── Responsive (all samples) ── */
+@media (max-width: 1024px) {
+  .s-a .bento { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .s-a .bento .t1 { grid-row: auto; min-height: 300px; }
+  .s-a .bento .t4 { grid-column: 1 / -1; }
+  .s-b .ch-grid { grid-template-columns: repeat(2, 1fr); }
+  .s-b .canvas-entry { height: 420px; }
+  .s-c .mag-entry { grid-template-columns: 1fr; }
+  .s-c .mag-feature { min-height: 360px; }
+  .s-n .desk-layout { grid-template-columns: 1fr; }
+  .s-n .sidebar { display: none; }
+  .s-n .stream-grid { grid-template-columns: repeat(2, 1fr); }
+  .s-n .streamer-strip { grid-template-columns: repeat(3, 1fr); }
+  .s-n .program-table .pt-header,
+  .s-n .program-table .pt-row { grid-template-columns: 80px 1fr 120px 100px 70px; }
+  .s-d .broken-entry { grid-template-columns: 1fr 1fr; }
+  .s-d .be-hero { grid-column: 1 / -1; }
+  .s-d .cat-broken-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
+  .s-d .cat-card.tall { grid-row: auto; }
+}
+@media (max-width: 640px) {
+  .s-a .bento { grid-template-columns: 1fr; }
+  .s-b .ch-grid { grid-template-columns: 1fr; }
+  .s-b .canvas-entry .layer-front { display: none; }
+  .s-c .streamer-row { grid-template-columns: 40px 1fr 80px; }
+  .s-c .streamer-row .s-title, .s-c .streamer-row .s-status { display: none; }
+  .s-n .stream-grid { grid-template-columns: 1fr; }
+  .s-n .streamer-strip { grid-template-columns: repeat(2, 1fr); }
+  .s-n .program-table .pt-header,
+  .s-n .program-table .pt-row { grid-template-columns: 60px 1fr 80px; }
+  .s-n .program-table .pt-header > :nth-child(4),
+  .s-n .program-table .pt-header > :nth-child(5),
+  .s-n .program-table .pt-row > :nth-child(4),
+  .s-n .program-table .pt-row > :nth-child(5) { display: none; }
+  .s-n .featured-stream { height: 240px; }
+  .s-d .broken-entry { grid-template-columns: 1fr; }
+  .s-d .be-hero .hero-text h2 { font-size: 28px; }
+  .s-d .cat-broken-grid { grid-template-columns: 1fr; }
+  .s-d .cat-card.wide { grid-column: auto; }
+  .s-d .upcoming-bar { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Tab Bar -->
+<div id="tab-bar">
+  <button class="active" onclick="showSample('a')">A · Pulse</button>
+  <button onclick="showSample('b')">B · Signal</button>
+  <button onclick="showSample('c')">C · Flow</button>
+  <button onclick="showSample('n')">N · NX Desk</button>
+  <button onclick="showSample('d')">D · NX Grid</button>
+</div>
+
+<!-- ═══ SAMPLE A: Pulse ═══ -->
+<div id="sample-a" class="sample s-a active">
+  <div class="inner">
+    <nav class="nav-a">
+      <div class="logo">NEXON<span>LIVE</span></div>
+      <ul>
+        <li>탐색</li>
+        <li>카테고리</li>
+        <li>이벤트</li>
+        <li>커뮤니티</li>
+      </ul>
+      <button class="btn-live">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16" fill="currentColor" stroke="none"/></svg>
+        방송 시작
+      </button>
+    </nav>
+
+    <!-- Bento Grid Entry -->
+    <div class="bento">
+      <div class="tile t1">
+        <div class="live-badge">LIVE</div>
+        <div class="stream-title">메이플스토리 월드 신규 콘텐츠<br>첫 공개 방송</div>
+        <div class="streamer">🎮 ProGamer_KR · 메이플스토리</div>
+        <div class="viewer-count">12.4K<small>시청 중</small></div>
+      </div>
+      <div class="tile t2">
+        <h3>🔥 인기 게임</h3>
+        <div class="game-list">
+          <div class="game-item">
+            <div class="game-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff5154" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="3"/><line x1="9" y1="6" x2="9" y2="18"/><circle cx="6" cy="12" r="1.5" fill="#ff5154"/></svg>
+            </div>
+            <div><div class="game-name">메이플스토리</div><div class="game-viewers">42.1K 시청</div></div>
+          </div>
+          <div class="game-item">
+            <div class="game-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff5154" stroke-width="2"><polygon points="12,2 22,8.5 22,15.5 12,22 2,15.5 2,8.5"/><line x1="12" y1="22" x2="12" y2="15.5"/></svg>
+            </div>
+            <div><div class="game-name">던전앤파이터</div><div class="game-viewers">28.7K 시청</div></div>
+          </div>
+          <div class="game-item">
+            <div class="game-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff5154" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            </div>
+            <div><div class="game-name">FC 온라인</div><div class="game-viewers">19.3K 시청</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="tile t3">
+        <div class="stat-number">847</div>
+        <div class="stat-label">라이브 채널</div>
+      </div>
+      <div class="tile t4">
+        <div class="chat-preview">
+          <div class="chat-msg"><span class="nick">NexonFan:</span><span class="txt">와 이 스킬 신기하다 ㄷㄷ</span></div>
+          <div class="chat-msg"><span class="nick">MapleKing:</span><span class="txt">보스전 타임어택 가자!</span></div>
+          <div class="chat-msg"><span class="nick">GameLover_22:</span><span class="txt">이번 업데이트 대박이네</span></div>
+          <div class="chat-msg"><span class="nick">StreamWatcher:</span><span class="txt">채팅 분위기 너무 좋다 ㅎㅎ</span></div>
+        </div>
+        <div class="chat-input-area">
+          <h4>실시간 채팅</h4>
+          <div class="chat-input">메시지를 입력하세요...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category scroll -->
+    <div class="section-cat">
+      <h2>카테고리 탐색</h2>
+      <div class="cat-scroll">
+        <div class="cat-card"><div class="cat-bg"></div><div class="cat-info"><div class="cat-name">메이플스토리</div><div class="cat-count">42.1K 시청</div></div></div>
+        <div class="cat-card"><div class="cat-bg"></div><div class="cat-info"><div class="cat-name">던전앤파이터</div><div class="cat-count">28.7K 시청</div></div></div>
+        <div class="cat-card"><div class="cat-bg"></div><div class="cat-info"><div class="cat-name">FC 온라인</div><div class="cat-count">19.3K 시청</div></div></div>
+        <div class="cat-card"><div class="cat-bg"></div><div class="cat-info"><div class="cat-name">카트라이더</div><div class="cat-count">15.8K 시청</div></div></div>
+        <div class="cat-card"><div class="cat-bg"></div><div class="cat-info"><div class="cat-name">바람의나라</div><div class="cat-count">8.2K 시청</div></div></div>
+        <div class="cat-card"><div class="cat-bg"></div><div class="cat-info"><div class="cat-name">서든어택</div><div class="cat-count">6.5K 시청</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SAMPLE B: Signal ═══ -->
+<div id="sample-b" class="sample s-b">
+  <div class="inner">
+    <nav class="nav-b">
+      <div class="logo">NEXON LIVE</div>
+      <ul>
+        <li>탐색</li>
+        <li>채널</li>
+        <li>일정</li>
+        <li>랭킹</li>
+      </ul>
+      <button class="btn-start">방송하기 →</button>
+    </nav>
+
+    <!-- Layered Canvas Entry -->
+    <div class="canvas-entry">
+      <div class="layer-bg"></div>
+      <div class="layer-mid">
+        <div class="broadcast-tag">ON AIR</div>
+        <div class="broadcast-title">2026 넥슨 챔피언십<br>결승전 실시간 중계</div>
+        <div class="broadcast-meta">
+          <span class="viewers">38.2K</span>
+          <span>시청 중</span>
+          <span>·</span>
+          <span>메이플스토리 · e스포츠</span>
+        </div>
+      </div>
+      <div class="layer-front">
+        <div class="widget-card">
+          <h4>실시간 통계</h4>
+          <div class="w-row"><span>동시 시청자</span><span class="w-val" style="color:#c4ff36">38,241</span></div>
+          <div class="w-row"><span>누적 시청</span><span class="w-val">124.5K</span></div>
+          <div class="w-row"><span>채팅 속도</span><span class="w-val" style="color:#00d9a6">892/분</span></div>
+        </div>
+        <div class="widget-card">
+          <h4>다음 매치</h4>
+          <div class="w-row"><span>T1 vs DRX</span><span class="w-val" style="color:#c4ff36">19:30</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Channel grid -->
+    <div class="section-channels">
+      <div class="section-header">
+        <h2>추천 채널</h2>
+        <span class="link">전체 보기 →</span>
+      </div>
+      <div class="ch-grid">
+        <div class="ch-card">
+          <div class="ch-thumb"><span class="ch-live-dot"></span><span class="ch-viewers">8.1K</span></div>
+          <div class="ch-info"><div class="ch-name">MapleStory_Official</div><div class="ch-game">메이플스토리 · Just Chatting</div></div>
+        </div>
+        <div class="ch-card">
+          <div class="ch-thumb"><span class="ch-live-dot"></span><span class="ch-viewers">5.3K</span></div>
+          <div class="ch-info"><div class="ch-name">DNF_ProPlayer</div><div class="ch-game">던전앤파이터 · PvP</div></div>
+        </div>
+        <div class="ch-card">
+          <div class="ch-thumb"><span class="ch-live-dot"></span><span class="ch-viewers">12.7K</span></div>
+          <div class="ch-info"><div class="ch-name">FC_Champion</div><div class="ch-game">FC 온라인 · 랭크 매치</div></div>
+        </div>
+        <div class="ch-card">
+          <div class="ch-thumb"><span class="ch-live-dot"></span><span class="ch-viewers">3.9K</span></div>
+          <div class="ch-info"><div class="ch-name">KartRider_Speed</div><div class="ch-game">카트라이더 · 스피드전</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SAMPLE C: Flow ═══ -->
+<div id="sample-c" class="sample s-c">
+  <div class="inner">
+    <nav class="nav-c">
+      <div class="logo">NEXON LIVE</div>
+      <ul>
+        <li>피드</li>
+        <li>스트리머</li>
+        <li>스케줄</li>
+        <li>아카이브</li>
+      </ul>
+      <button class="btn-join">시작하기</button>
+    </nav>
+
+    <!-- Magazine Entry -->
+    <div class="mag-entry">
+      <div class="mag-feature">
+        <div class="mag-label">FEATURED LIVE</div>
+        <div class="mag-f-content">
+          <div class="mag-f-title">메이플스토리 월드<br>최초 공개 라이브</div>
+          <div class="mag-f-desc">새로운 세계가 열립니다. 개발팀이 직접 소개하는 신규 콘텐츠를 지금 바로 시청하세요.</div>
+        </div>
+      </div>
+      <div class="mag-side-top">
+        <div class="tag">TRENDING NOW</div>
+        <h3>실시간 인기 급상승 채널</h3>
+        <div class="stat-row">
+          <div class="stat-item"><div class="stat-val">2.4K</div><div class="stat-lbl">라이브 채널</div></div>
+          <div class="stat-item"><div class="stat-val">189K</div><div class="stat-lbl">동시 시청자</div></div>
+        </div>
+      </div>
+      <div class="mag-side-bottom">
+        <div class="schedule-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><circle cx="12" cy="16" r="2" fill="#fff"/></svg>
+        </div>
+        <div class="schedule-info">
+          <h4>오늘의 방송 일정</h4>
+          <p>19:00 던파 챔피언십 · 20:30 메이플 신규 업데이트 쇼케이스</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Streamer list -->
+    <div class="section-streamers">
+      <div class="section-header">
+        <h2>인기 스트리머</h2>
+        <div class="filter-pills">
+          <button class="active">전체</button>
+          <button>메이플스토리</button>
+          <button>던파</button>
+          <button>FC 온라인</button>
+        </div>
+      </div>
+      <div class="streamer-list">
+        <div class="streamer-row">
+          <div class="rank">01</div>
+          <div><div class="s-name">ProGamer_KR</div><div class="s-game">메이플스토리</div></div>
+          <div class="s-title">신규 보스 세계 최초 클리어 도전</div>
+          <div class="s-viewers">12.4K</div>
+          <div class="s-status"><span class="dot-live"></span></div>
+        </div>
+        <div class="streamer-row">
+          <div class="rank">02</div>
+          <div><div class="s-name">DNF_Master</div><div class="s-game">던전앤파이터</div></div>
+          <div class="s-title">결투장 랭킹 1위 도전기</div>
+          <div class="s-viewers">8.7K</div>
+          <div class="s-status"><span class="dot-live"></span></div>
+        </div>
+        <div class="streamer-row">
+          <div class="rank">03</div>
+          <div><div class="s-name">FC_Legend</div><div class="s-game">FC 온라인</div></div>
+          <div class="s-title">슈퍼챔피언스 시즌 개막전</div>
+          <div class="s-viewers">6.2K</div>
+          <div class="s-status"><span class="dot-live"></span></div>
+        </div>
+        <div class="streamer-row">
+          <div class="rank">04</div>
+          <div><div class="s-name">KartSpeed_01</div><div class="s-game">카트라이더</div></div>
+          <div class="s-title">스피드전 세계 기록 갱신 중</div>
+          <div class="s-viewers">4.1K</div>
+          <div class="s-status"><span class="dot-live"></span></div>
+        </div>
+        <div class="streamer-row">
+          <div class="rank">05</div>
+          <div><div class="s-name">NexonDev_Official</div><div class="s-game">Just Chatting</div></div>
+          <div class="s-title">개발자와의 대화 — 7월 업데이트 미리보기</div>
+          <div class="s-viewers">3.8K</div>
+          <div class="s-status"><span class="dot-live"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SAMPLE N: NX Desk (사이드바+콘텐츠) ═══ -->
+<div id="sample-n" class="sample s-n">
+  <div class="desk-layout">
+    <aside class="sidebar">
+      <div class="logo-n"><em>넥슨</em>라이브</div>
+      <div class="nav-section">
+        <div class="section-label">탐색</div>
+        <div class="nav-item active">
+          <div class="icon-dot" style="background:var(--nx-pc-600)"></div>
+          추천 라이브
+        </div>
+        <div class="nav-item">
+          <div class="icon-dot" style="background:var(--nx-success)"></div>
+          인기 채널
+          <span class="badge-count">12</span>
+        </div>
+        <div class="nav-item">
+          <div class="icon-dot" style="background:var(--nx-warning)"></div>
+          카테고리
+        </div>
+      </div>
+      <div class="nav-section">
+        <div class="section-label">팔로잉</div>
+        <div class="nav-item">
+          <div class="icon-dot" style="background:var(--nx-danger)"></div>
+          ProGamer_KR
+          <span class="badge-live">LIVE</span>
+        </div>
+        <div class="nav-item">
+          <div class="icon-dot" style="background:var(--nx-danger)"></div>
+          DNF_Master
+          <span class="badge-live">LIVE</span>
+        </div>
+        <div class="nav-item">
+          <div class="icon-dot" style="background:var(--nx-bc-300)"></div>
+          MapleQueen
+        </div>
+        <div class="nav-item">
+          <div class="icon-dot" style="background:var(--nx-bc-300)"></div>
+          KartSpeed_01
+        </div>
+      </div>
+      <div class="nav-section">
+        <div class="section-label">게임</div>
+        <div class="nav-item">
+          <div class="icon-dot" style="background:#8B5CF6"></div>
+          메이플스토리
+        </div>
+        <div class="nav-item">
+          <div class="icon-dot" style="background:#F97316"></div>
+          던전앤파이터
+        </div>
+        <div class="nav-item">
+          <div class="icon-dot" style="background:#06B6D4"></div>
+          FC 온라인
+        </div>
+        <div class="nav-item">
+          <div class="icon-dot" style="background:#EC4899"></div>
+          카트라이더
+        </div>
+      </div>
+    </aside>
+    <main class="main-content">
+      <div class="main-header">
+        <h1>추천 라이브</h1>
+        <div class="search-box">
+          <span>🔍</span>
+          <input type="text" placeholder="채널, 게임, 스트리머 검색...">
+        </div>
+      </div>
+
+      <div class="featured-stream">
+        <div class="fs-live-badge">LIVE</div>
+        <div class="fs-viewers">👤 14,281 시청 중</div>
+        <div class="fs-overlay">
+          <div class="fs-title">메이플스토리 — 신규 보스 세계 최초 클리어 도전</div>
+          <div class="fs-meta">
+            <span>ProGamer_KR</span>
+            <span class="tag">메이플스토리</span>
+            <span>2시간 38분 방송 중</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-title">
+        지금 인기 있는 방송
+        <span class="more">전체보기 →</span>
+      </div>
+      <div class="stream-grid">
+        <div class="stream-card">
+          <div class="card-thumb" style="background:linear-gradient(135deg,#1E4B85,#3D91FF)">
+            <div class="thumb-live">LIVE</div>
+            <div class="thumb-viewers">8.7K</div>
+          </div>
+          <div class="card-info">
+            <div class="ci-title">결투장 랭킹 1위 도전기</div>
+            <div class="ci-streamer">DNF_Master</div>
+            <div class="ci-tags"><span>던전앤파이터</span><span>PvP</span></div>
+          </div>
+        </div>
+        <div class="stream-card">
+          <div class="card-thumb" style="background:linear-gradient(135deg,#0056C7,#57A0FF)">
+            <div class="thumb-live">LIVE</div>
+            <div class="thumb-viewers">6.2K</div>
+          </div>
+          <div class="card-info">
+            <div class="ci-title">슈퍼챔피언스 시즌 개막전</div>
+            <div class="ci-streamer">FC_Legend</div>
+            <div class="ci-tags"><span>FC 온라인</span><span>랭크매치</span></div>
+          </div>
+        </div>
+        <div class="stream-card">
+          <div class="card-thumb" style="background:linear-gradient(135deg,#3D4148,#747A86)">
+            <div class="thumb-live">LIVE</div>
+            <div class="thumb-viewers">4.1K</div>
+          </div>
+          <div class="card-info">
+            <div class="ci-title">스피드전 세계 기록 갱신 중</div>
+            <div class="ci-streamer">KartSpeed_01</div>
+            <div class="ci-tags"><span>카트라이더</span><span>스피드</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-title">
+        인기 스트리머
+        <span class="more">전체보기 →</span>
+      </div>
+      <div class="streamer-strip">
+        <div class="streamer-item">
+          <div class="si-avatar">
+            <div class="live-ring"></div>
+            <div class="avatar-circle" style="background:linear-gradient(135deg,#1E4B85,#57A0FF)">P</div>
+          </div>
+          <div class="si-name">ProGamer_KR</div>
+          <div class="si-game">메이플스토리</div>
+          <div class="si-viewers">14.2K 시청 중</div>
+        </div>
+        <div class="streamer-item">
+          <div class="si-avatar">
+            <div class="live-ring"></div>
+            <div class="avatar-circle" style="background:linear-gradient(135deg,#0056C7,#3D91FF)">D</div>
+          </div>
+          <div class="si-name">DNF_Master</div>
+          <div class="si-game">던전앤파이터</div>
+          <div class="si-viewers">8.7K 시청 중</div>
+        </div>
+        <div class="streamer-item">
+          <div class="si-avatar">
+            <div class="live-ring"></div>
+            <div class="avatar-circle" style="background:linear-gradient(135deg,#0A74FF,#57A0FF)">F</div>
+          </div>
+          <div class="si-name">FC_Legend</div>
+          <div class="si-game">FC 온라인</div>
+          <div class="si-viewers">6.2K 시청 중</div>
+        </div>
+        <div class="streamer-item">
+          <div class="si-avatar">
+            <div class="avatar-circle" style="background:linear-gradient(135deg,#3D4148,#747A86)">K</div>
+          </div>
+          <div class="si-name">KartSpeed_01</div>
+          <div class="si-game">카트라이더</div>
+          <div class="si-viewers">4.1K 시청 중</div>
+        </div>
+        <div class="streamer-item">
+          <div class="si-avatar">
+            <div class="avatar-circle" style="background:linear-gradient(135deg,#51555D,#A1A7B5)">N</div>
+          </div>
+          <div class="si-name">NexonDev</div>
+          <div class="si-game">Just Chatting</div>
+          <div class="si-viewers">3.8K 시청 중</div>
+        </div>
+      </div>
+
+      <div class="section-title">
+        편성표
+        <span class="more">전체 편성표 →</span>
+      </div>
+      <div class="program-table">
+        <div class="pt-header">
+          <div>시간</div>
+          <div>프로그램</div>
+          <div>채널</div>
+          <div>카테고리</div>
+          <div>상태</div>
+        </div>
+        <div class="pt-row now">
+          <div class="pt-time">14:00</div>
+          <div class="pt-title">메이플스토리 신규 보스 세계 최초 클리어 도전</div>
+          <div class="pt-channel">ProGamer_KR</div>
+          <div><span class="pt-category">메이플스토리</span></div>
+          <div class="pt-status"><span class="on-air">ON AIR</span></div>
+        </div>
+        <div class="pt-row now">
+          <div class="pt-time">14:30</div>
+          <div class="pt-title">결투장 랭킹 1위 도전기 — 시즌 결산</div>
+          <div class="pt-channel">DNF_Master</div>
+          <div><span class="pt-category">던전앤파이터</span></div>
+          <div class="pt-status"><span class="on-air">ON AIR</span></div>
+        </div>
+        <div class="pt-row">
+          <div class="pt-time">15:00</div>
+          <div class="pt-title">메이플 공식 여름 업데이트 쇼케이스</div>
+          <div class="pt-channel">넥슨 공식</div>
+          <div><span class="pt-category">공식 방송</span></div>
+          <div class="pt-status"><span class="upcoming">예정</span></div>
+        </div>
+        <div class="pt-row">
+          <div class="pt-time">17:00</div>
+          <div class="pt-title">DNF 결투장 토너먼트 8강 — 상금 500만원</div>
+          <div class="pt-channel">DNF 이스포츠</div>
+          <div><span class="pt-category">이스포츠</span></div>
+          <div class="pt-status"><span class="upcoming">예정</span></div>
+        </div>
+        <div class="pt-row">
+          <div class="pt-time">19:00</div>
+          <div class="pt-title">FC 프로리그 시즌 개막전</div>
+          <div class="pt-channel">FC 공식</div>
+          <div><span class="pt-category">이스포츠</span></div>
+          <div class="pt-status"><span class="upcoming">예정</span></div>
+        </div>
+        <div class="pt-row">
+          <div class="pt-time">21:00</div>
+          <div class="pt-title">개발자와의 대화 — 7월 업데이트 미리보기</div>
+          <div class="pt-channel">NexonDev</div>
+          <div><span class="pt-category">Just Chatting</span></div>
+          <div class="pt-status"><span class="upcoming">예정</span></div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ═══ SAMPLE D: NX Grid (브로큰 그리드 + 타이포 블록) ═══ -->
+<div id="sample-d" class="sample s-d">
+  <div class="inner-d">
+    <nav class="nav-d">
+      <div class="logo-d"><em>넥슨</em>라이브</div>
+      <ul>
+        <li>라이브</li>
+        <li>카테고리</li>
+        <li>이벤트</li>
+        <li>클립</li>
+      </ul>
+      <button class="btn-go-live">방송 시작</button>
+    </nav>
+
+    <div class="broken-entry">
+      <div class="be-hero">
+        <div class="hero-badge">LIVE NOW</div>
+        <div class="hero-viewers">👤 14,281</div>
+        <div class="hero-text">
+          <h2>지금, <span>라이브</span>로<br>연결되는 순간</h2>
+          <p>넥슨 게임의 모든 실시간 방송과 이벤트를 한곳에서. 좋아하는 스트리머와 함께하세요.</p>
+        </div>
+      </div>
+      <div class="be-stat">
+        <div class="stat-num">847</div>
+        <div class="stat-label">Live Now</div>
+      </div>
+      <div class="be-ticker">
+        <div class="ticker-title">Trending</div>
+        <div class="ticker-item">
+          <div class="tk-rank">1</div>
+          <div class="tk-info"><div class="tk-name">ProGamer_KR</div><div class="tk-game">메이플스토리</div></div>
+          <div class="tk-viewers">14.2K</div>
+        </div>
+        <div class="ticker-item">
+          <div class="tk-rank">2</div>
+          <div class="tk-info"><div class="tk-name">DNF_Master</div><div class="tk-game">던전앤파이터</div></div>
+          <div class="tk-viewers">8.7K</div>
+        </div>
+        <div class="ticker-item">
+          <div class="tk-rank">3</div>
+          <div class="tk-info"><div class="tk-name">FC_Legend</div><div class="tk-game">FC 온라인</div></div>
+          <div class="tk-viewers">6.2K</div>
+        </div>
+        <div class="ticker-item">
+          <div class="tk-rank">4</div>
+          <div class="tk-info"><div class="tk-name">KartSpeed_01</div><div class="tk-game">카트라이더</div></div>
+          <div class="tk-viewers">4.1K</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="category-section">
+      <div class="cat-header">
+        <h3>인기 카테고리</h3>
+        <span class="cat-more">전체보기 →</span>
+      </div>
+      <div class="cat-broken-grid">
+        <div class="cat-card wide" style="background:linear-gradient(135deg,#1E4B85,#0A74FF)">
+          <div class="cc-live-dot"></div>
+          <div class="cc-game">메이플스토리</div>
+          <div class="cc-count">127개 채널 · 48.2K 시청자</div>
+        </div>
+        <div class="cat-card" style="background:linear-gradient(135deg,#3D4148,#747A86)">
+          <div class="cc-live-dot"></div>
+          <div class="cc-game">던전앤파이터</div>
+          <div class="cc-count">89개 채널</div>
+        </div>
+        <div class="cat-card" style="background:linear-gradient(135deg,#0056C7,#57A0FF)">
+          <div class="cc-live-dot"></div>
+          <div class="cc-game">FC 온라인</div>
+          <div class="cc-count">64개 채널</div>
+        </div>
+        <div class="cat-card" style="background:linear-gradient(135deg,#51555D,#A1A7B5)">
+          <div class="cc-game">카트라이더</div>
+          <div class="cc-count">42개 채널</div>
+        </div>
+        <div class="cat-card wide" style="background:linear-gradient(135deg,#3D91FF,#0056C7)">
+          <div class="cc-live-dot"></div>
+          <div class="cc-game">Just Chatting</div>
+          <div class="cc-count">156개 채널 · 32.1K 시청자</div>
+        </div>
+        <div class="cat-card" style="background:linear-gradient(135deg,#747A86,#3D4148)">
+          <div class="cc-game">바람의나라</div>
+          <div class="cc-count">28개 채널</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="category-section">
+      <div class="cat-header">
+        <h3>예정된 이벤트</h3>
+        <span class="cat-more">전체 일정 →</span>
+      </div>
+      <div class="upcoming-bar">
+        <div class="up-item">
+          <div class="up-time">오늘 오후 3:00</div>
+          <div class="up-title">메이플 여름 업데이트 쇼케이스</div>
+          <div class="up-desc">신규 보스 & 지역 공개 · 공식 채널</div>
+        </div>
+        <div class="up-item">
+          <div class="up-time">오늘 오후 5:00</div>
+          <div class="up-title">DNF 결투장 토너먼트 8강</div>
+          <div class="up-desc">상금 500만원 · 이스포츠</div>
+        </div>
+        <div class="up-item">
+          <div class="up-time">내일 오후 7:00</div>
+          <div class="up-title">FC 프로리그 시즌 개막</div>
+          <div class="up-desc">프로게이머 16팀 참가 · 공식</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function showSample(id) {
+  document.querySelectorAll('.sample').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('#tab-bar button').forEach(b => b.classList.remove('active'));
+  document.getElementById('sample-' + id).classList.add('active');
+  var idx = {a:1,b:2,c:3,n:4,d:5}[id];
+  document.querySelector('#tab-bar button:nth-child(' + idx + ')').classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+</script>
+</body>
+</html>
