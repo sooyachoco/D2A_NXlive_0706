@@ -1,0 +1,79 @@
+{
+  "ranAt": "2026-07-06T00:36:36.341Z",
+  "base": "http://localhost:3000",
+  "total": 6,
+  "completed": 5,
+  "errors": 1,
+  "consoleErrorCount": 1,
+  "consoleErrors": [
+    {
+      "persona": "accessibility",
+      "text": "A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:\n\n- A server/client bran"
+    }
+  ],
+  "results": [
+    {
+      "timestamp": 1783298192517,
+      "persona": "beginner",
+      "scenario": "S-B01",
+      "action": "enter-live",
+      "completed": true,
+      "hesitationMs": 600,
+      "isError": false,
+      "errorType": null,
+      "durationMs": 901,
+      "note": "플레이어=true, 채팅=true"
+    },
+    {
+      "timestamp": 1783298193009,
+      "persona": "beginner",
+      "scenario": "S-B02",
+      "action": "game-filter",
+      "completed": true,
+      "isError": false,
+      "errorType": null,
+      "note": "필터 전 카드=7, FC ONLINE 후=7"
+    },
+    {
+      "timestamp": 1783298193996,
+      "persona": "power-user",
+      "scenario": "S-P01",
+      "action": "follow+chat",
+      "completed": false,
+      "isError": true,
+      "errorType": "follow-or-chat-fail",
+      "durationMs": 354,
+      "note": "팔로우전환=false, 채팅반영=false"
+    },
+    {
+      "timestamp": 1783298194479,
+      "persona": "power-user",
+      "scenario": "S-P02",
+      "action": "search+tab",
+      "completed": true,
+      "isError": false,
+      "errorType": null,
+      "note": "'메이플' 라이브 결과=7, 채널탭 활성=true"
+    },
+    {
+      "timestamp": 1783298195460,
+      "persona": "accessibility",
+      "scenario": "S-A01",
+      "action": "keyboard-nav+aria",
+      "completed": true,
+      "isError": false,
+      "errorType": null,
+      "note": "Tab 포커스 요소=29, 필터 aria-pressed=8개, focus outline=solid 3px"
+    },
+    {
+      "timestamp": 1783298195806,
+      "persona": "accessibility",
+      "scenario": "S-A02",
+      "action": "form-a11y-names",
+      "completed": true,
+      "isError": false,
+      "errorType": null,
+      "note": "채팅input aria-label=1, 전송버튼=1, 팔로우버튼=1"
+    }
+  ]
+}
