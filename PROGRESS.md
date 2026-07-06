@@ -13,14 +13,14 @@
 
 | 항목 | 값 |
 |---|---|
-| **현재 단계** | create-spec **완료** → 다음: run-phase 1 |
-| **상태** | ✅ 프로토타입 승인 · 스펙 문서 전체 생성 (tasks 검증 통과 8태스크) |
-| **마지막 작업** | Step 2.8~6: 타입 확정 + decisions/plan/data-model/api-spec/tasks |
-| **세션 체크포인트** | 2026-07-03 create-spec 완료 |
-| **review_status** | — (Phase 1 미착수) |
-| **다음 행동** | `run-phase 1 해줘` — Phase 1(프론트 마감 + E2E) 자율 실행 |
+| **현재 단계** | Phase 1 **완료** (프론트 마감 + E2E + 리뷰) |
+| **상태** | ✅ Phase 1 완료 — 로컬 실행 확인 대기 |
+| **마지막 작업** | T1-review: 6명 리뷰 → Required 6건 수정(하이드레이션·접근성·aria) |
+| **세션 체크포인트** | 2026-07-06 Phase 1 완료 |
+| **review_status** | Phase 1: ✅ 2026-07-06 |
+| **다음 행동** | 로컬 실행 확인 후 → Phase G(보안 점검) 또는 Phase H(배포). Phase 2(실 API)는 백엔드 결정 후 |
 
-**Phase 0** ☑ 완료 (프로토타입 승인) · **Phase 1** ☐ 예정(E2E·접근성·팔로우 지속성·리뷰) · **Phase 2** ⬜ 보류(백엔드 결정 후)
+**Phase 0** ☑ · **Phase 1** ☑ 완료(E2E 5통과·리뷰 Blocker0) · **Phase 2** ⬜ 보류(백엔드 D-12 결정 후)
 
 **확정 사항 요약**
 - 프로젝트: NXlive — 넥슨 게임 라이브 스트리밍 (외부 유저, 신규)
@@ -85,7 +85,7 @@
 > `/run-phase` 실행 시 완료된 Phase를 [x]로 갱신한다.
 
 - [ ] Phase 0.5: 외부 연동 검증
-- [ ] Phase 1: {첫 번째 기능 Phase}
+- [x] Phase 1: 프론트 마감 + E2E (리뷰 완료)
 - [ ] Phase 2: {두 번째 기능 Phase}
 - [ ] Phase N: … ← **진행 중**
 
@@ -113,46 +113,47 @@
 > Phase 전환 / 블로커 발생 시 AI가 이 섹션을 갱신한다.
 > 상세 설계 결정은 `decisions.md`에 영구 기록한다.
 
-### 디렉터리 구조 (Phase N 완료 기준)
-
-> AI가 Phase 완료 시 헤더의 Phase 번호를 업데이트한다.
+### 디렉터리 구조 (Phase 1 완료 기준)
 
 ```
-{실제 프로젝트 구조 — 첫 Phase 완료 후 AI가 자동 기록}
-예:
-backend/
+frontend/  (Next.js 15 App Router · React 19 · TS)
   app/
-    api/v1/        ← 라우터
-    services/      ← 비즈니스 로직
-    models/        ← DB 모델
-    schemas/       ← 요청/응답 스키마
-  tests/
-frontend/
-  src/
-    components/    ← 공통 컴포넌트
-    pages/         ← 페이지 컴포넌트
-    hooks/         ← 커스텀 훅
+    page.tsx                     ← 홈 (라이브 발견, 서버 컴포넌트)
+    live/[channelId]/page.tsx    ← 라이브 시청 (서버 → LiveWatch 클라이언트)
+    channel/[channelId]/page.tsx ← 채널
+    clips/page.tsx               ← 클립
+    search/page.tsx              ← 검색 (클라이언트)
+    layout.tsx · globals.css     ← 루트 레이아웃 + NX Basic 토큰
+  components/  Header · LiveCard · ClipCard · HomeLives · LiveWatch · FollowButton
+  services/    liveService · channelService · clipService  (USE_MOCK 게이트)
+  mocks/data.ts   더미 데이터
+  lib/         store.ts(zustand persist) · format.ts(fmtCount)
+  types/index.ts  Channel · Live · Clip · ChatMessage · GameKey
+  tests/e2e/   home.spec.ts · live-watch.spec.ts  (playwright.config.ts)
 ```
 
 ### 공통 패턴
 
 | 항목 | 패턴 |
 |---|---|
-| 에러 응답 | {예: `{"detail": str, "code": str}`} |
-| 인증 주입 | {예: `Depends(require_auth)`} |
-| DB 세션 | {예: `Depends(get_db)`} |
-| API 라우터 prefix | {예: `/api/v1`} |
+| 데이터 접근 | 컴포넌트 → `services/*Service.ts` → `USE_MOCK ? mocks : fetch('/api/...')` |
+| Mock 게이트 | `process.env.NEXT_PUBLIC_USE_MOCK === 'true'` (services 3파일) |
+| 숫자 표시 | `import { fmtCount as fmt } from '@/lib/format'` (로케일 `ko-KR` 고정 — 하이드레이션 안전) |
+| 전역 상태 | `useFollowStore` (zustand + persist, localStorage `nxlive-following`) |
+| 서버/클라 경계 | 데이터 페칭 페이지=서버 컴포넌트, 인터랙션(store/타이머)=`'use client'` |
+| 스타일 | `globals.css` NX Basic 토큰(CSS 변수) — 다크 `bc-1000/db·pc-500`, 라이트 `lb-200·pc-800` |
 
 ### 핵심 인터페이스
 
-> 다음 태스크가 참조할 함수·클래스·타입.
-
 | 파일 | 이름 | 역할 |
 |---|---|---|
-| {예: backend/app/middleware/auth.py} | {require_auth} | {Depends 주입, request.state.user 설정} |
-| {예: backend/app/schemas/user.py} | {UserPayload} | {id: int, email: str, role: str} |
+| frontend/lib/format.ts | `fmtCount(n)` | 숫자→`ko-KR` 로케일 고정 표시 (SSR 안전) |
+| frontend/lib/store.ts | `useFollowStore` | 팔로우 Set (persist, `has`/`toggle`) |
+| frontend/services/liveService.ts | `getLives`/`getLive`/`getRanking` | 라이브 조회 (Mock↔API) |
+| frontend/types/index.ts | `Live`/`Channel`/`Clip`/`GameKey` | 도메인 타입 단일 출처 |
 
 ### 다음 세션 사전 메모
 
-- {예: 다음 태스크는 S3 presigned URL 필요 → .env.example에 S3_BUCKET_NAME 추가 필요}
-- {예: spec.md 3.2절 프로필 이미지 크기 제한 5MB 적용 필요}
+- Phase 2(Mock→실제 API)는 백엔드 스택(D-12)·영상 인프라(D-13) 결정 후 착수. `contracts/api-spec.yaml`이 계약.
+- Phase 2 진입 시 `services/*.ts`의 `fetch` 분기 활성화 + `mocks/` 제거 + `check-mock-cleanup.sh` 통과 필요.
+- 잔여 Advisory는 `docs/technical-debt.md` 참조 (USE_MOCK 추출, baram 정합, dead code 등).
