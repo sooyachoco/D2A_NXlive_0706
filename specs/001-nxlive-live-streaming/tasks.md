@@ -41,7 +41,7 @@
   - file: frontend/playwright.config.ts
   - cmd: cd frontend && npx playwright test tests/e2e/home.spec.ts --reporter=line
 **deps**: T0-003
-**status**: ☐
+**status**: ☑
 
 ### T1-002: 라이브 시청 핵심 플로우 e2e (Happy + Error)
 **read**: specs/001-nxlive-live-streaming/spec.md#기능별-요구사항
@@ -50,7 +50,7 @@
   - file: frontend/tests/e2e/live-watch.spec.ts
   - cmd: cd frontend && npx playwright test tests/e2e/live-watch.spec.ts --reporter=line
 **deps**: T1-001
-**status**: ☐
+**status**: ☑
 
 ### T1-003: 접근성·반응형 보강
 **read**: specs/001-nxlive-live-streaming/spec.md#비기능-요구사항
