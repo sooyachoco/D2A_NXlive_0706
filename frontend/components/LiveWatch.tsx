@@ -3,8 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import type { Live, Channel, ChatMessage } from '@/types';
 import { INITIAL_CHAT, makeChatMessage } from '@/mocks/data';
 import { useFollowStore } from '@/lib/store';
-
-const fmt = (n: number) => (n >= 10000 ? `${(n / 10000).toFixed(1)}만` : n.toLocaleString());
+import { fmtCount as fmt } from '@/lib/format';
 
 export default function LiveWatch({ live, channel }: { live: Live; channel: Channel }) {
   const [viewers, setViewers] = useState(live.viewers);

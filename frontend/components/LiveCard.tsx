@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import type { Live } from '@/types';
-
-const fmt = (n: number) => (n >= 10000 ? `${(n / 10000).toFixed(1)}만` : n.toLocaleString());
+import { fmtCount as fmt } from '@/lib/format';
 
 export default function LiveCard({ live }: { live: Live }) {
   return (

@@ -77,7 +77,7 @@
 **done**:
   - file: .claude/review-tokens/phase-1.token
 **deps**: T1-001, T1-002, T1-003, T1-004
-**status**: ☐
+**status**: ☑
 
 ## Phase 2: Mock → 실제 API 교체 (⬜ 보류 — 백엔드 D-12 결정 후)
 

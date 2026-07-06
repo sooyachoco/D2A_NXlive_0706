@@ -7,8 +7,7 @@ import { getChannels } from '@/services/channelService';
 import { getClips } from '@/services/clipService';
 import LiveCard from '@/components/LiveCard';
 import ClipCard from '@/components/ClipCard';
-
-const fmt = (n: number) => (n >= 10000 ? `${(n / 10000).toFixed(1)}만` : n.toLocaleString());
+import { fmtCount as fmt } from '@/lib/format';
 type Tab = 'live' | 'channel' | 'clip';
 
 export default function SearchPage() {
@@ -41,9 +40,9 @@ export default function SearchPage() {
       </div>
 
       <div className="tabs">
-        <button className={tab === 'live' ? 'on' : ''} onClick={() => setTab('live')}>라이브 ({counts.live})</button>
-        <button className={tab === 'channel' ? 'on' : ''} onClick={() => setTab('channel')}>채널 ({counts.channel})</button>
-        <button className={tab === 'clip' ? 'on' : ''} onClick={() => setTab('clip')}>클립 ({counts.clip})</button>
+        <button className={tab === 'live' ? 'on' : ''} aria-pressed={tab === 'live'} onClick={() => setTab('live')}>라이브 ({counts.live})</button>
+        <button className={tab === 'channel' ? 'on' : ''} aria-pressed={tab === 'channel'} onClick={() => setTab('channel')}>채널 ({counts.channel})</button>
+        <button className={tab === 'clip' ? 'on' : ''} aria-pressed={tab === 'clip'} onClick={() => setTab('clip')}>클립 ({counts.clip})</button>
       </div>
 
       {tab === 'live' && (

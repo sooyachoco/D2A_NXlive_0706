@@ -1,8 +1,7 @@
 import Link from 'next/link';
 import { getLives, getRanking } from '@/services/liveService';
 import HomeLives from '@/components/HomeLives';
-
-const fmt = (n: number) => (n >= 10000 ? `${(n / 10000).toFixed(1)}만` : n.toLocaleString());
+import { fmtCount as fmt } from '@/lib/format';
 
 export default async function HomePage() {
   const [lives, ranked] = await Promise.all([getLives(), getRanking()]);
@@ -29,8 +28,8 @@ export default async function HomePage() {
           <div className="side">
             <div className="panel-dark">
               <h3><span className="livedot" /> 실시간 통계</h3>
-              <div className="metric"><span className="l">동시 방송</span><span className="v cy">{lives.length.toLocaleString()}</span></div>
-              <div className="metric"><span className="l">실시간 시청자</span><span className="v mag">{totalViewers.toLocaleString()}</span></div>
+              <div className="metric"><span className="l">동시 방송</span><span className="v cy">{lives.length.toLocaleString('ko-KR')}</span></div>
+              <div className="metric"><span className="l">실시간 시청자</span><span className="v mag">{totalViewers.toLocaleString('ko-KR')}</span></div>
               <div className="metric"><span className="l">오늘 신규 클립</span><span className="v cy">3,912</span></div>
             </div>
             <div className="panel-dark">

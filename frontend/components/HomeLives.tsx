@@ -10,9 +10,9 @@ export default function HomeLives({ lives }: { lives: Live[] }) {
   return (
     <>
       <div className="filters">
-        <button className={`tag ${filter === 'all' ? 'on' : ''}`} onClick={() => setFilter('all')}>전체</button>
+        <button className={`tag ${filter === 'all' ? 'on' : ''}`} aria-pressed={filter === 'all'} onClick={() => setFilter('all')}>전체</button>
         {GAMES.map((g) => (
-          <button key={g.key} className={`tag ${filter === g.key ? 'on' : ''}`} onClick={() => setFilter(g.key)}>
+          <button key={g.key} className={`tag ${filter === g.key ? 'on' : ''}`} aria-pressed={filter === g.key} onClick={() => setFilter(g.key)}>
             {g.name}
           </button>
         ))}

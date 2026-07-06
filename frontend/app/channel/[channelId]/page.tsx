@@ -3,8 +3,7 @@ import { getChannel } from '@/services/channelService';
 import { getClipsByChannel } from '@/services/clipService';
 import FollowButton from '@/components/FollowButton';
 import ClipCard from '@/components/ClipCard';
-
-const fmt = (n: number) => (n >= 10000 ? `${(n / 10000).toFixed(1)}만` : n.toLocaleString());
+import { fmtCount as fmt } from '@/lib/format';
 
 export default async function ChannelPage({ params }: { params: Promise<{ channelId: string }> }) {
   const { channelId } = await params;
